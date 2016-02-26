@@ -54,12 +54,12 @@ first = True;
 mypath = sys.argv[1]
 profFiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 numFiles = len(profFiles)
-print numFiles
+#print numFiles
 
 # print the file name
 profFiles.sort()
-print profFiles
-print('\n')
+#print profFiles
+#print('\n')
 
 myfile =  open ("testing.csv", "w")
 
@@ -131,7 +131,7 @@ for i in range (0, numFiles):
 
 
 		#csv_row_entry = []
-		print params_list[keytitle]
+#		print params_list[keytitle]
 
 		# Use this if python 2.7 or greater
 		#value = subprocess.check_output(['./collectData.sh', filename, keytitle]);
@@ -142,8 +142,8 @@ for i in range (0, numFiles):
 	
 		#print (value + '\t'),
 		csv_row_entry.append(value)
-	print('\n')
-	print(csv_row_entry)
+#	print('\n')
+#	print(csv_row_entry)
 	wr.writerow(csv_row_entry)
 	#subprocess.check_call(['mkdir', '-p', ReadSplitDir])
 

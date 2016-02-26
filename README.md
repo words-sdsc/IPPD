@@ -1,1 +1,1 @@
-# IPPD/scripts - scripts for automated profiling of workflows
+# IPPD/scripts - scripts for automated profiling of workflows/data - profiled data

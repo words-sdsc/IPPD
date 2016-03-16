@@ -78,8 +78,9 @@ For any unused/unneeded params, you can just leave them blank
 '''
 
 # SLURM Script Configs
-#Jobname = "dup_seq"
-Jobname = "qa_filter"
+#Jobname = "qa_filter"
+#Jobname = "filter_human"
+Jobname = "dup_seq"
 JobErrorFile = "qsubError_" + Jobname
 JobOutputFile = "qsubOutput_" + Jobname
 Account = "ddp193"
@@ -92,8 +93,9 @@ TargetHost = "a3rao@comet.sdsc.edu"
 
 
 # Program Specific / Directory Parameters
-#JobFolderName = "dup"
-JobFolderName = "qc"
+#JobFolderName = "qc"
+#JobFolderName = "filter-human"
+JobFolderName = "dup"
 RemoteProjectDir = "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project"
 RemoteScriptDir = RemoteProjectDir + "/NGS-ann"
 RemoteToolDir = RemoteProjectDir + "/NGS-ann-program/bin"
@@ -103,6 +105,8 @@ RemoteRefDir = RemoteProjectDir + "/NGS-ann-ref"
 SampleName = "LS002"
 ErrTopDir = RemoteProjectDir + "/" + SampleName + "/qsubErrOut/" + JobFolderName
 OutputDir = RemoteProjectDir + "/" + SampleName + "/" + JobFolderName
+#InputDir = RemoteProjectDir + "/" + SampleName + "/qc"
+InputDir = RemoteProjectDir + "/" + SampleName + "/filter-human"
 ReadSplitDir = RemoteProjectDir + "/" + SampleName + "/read-split"
 NumOfSplit = "512"
 
@@ -144,11 +148,15 @@ for i in range (0, num_combs):
 	# define strings to use for this config
 	ConfigErrDir = ErrTopDir + DirToAppend
 	ConfigOutputDir = OutputDir + DirToAppend
+	ConfigInputDir = InputDir + DirToAppend
 	ConfigReadSplitDir = ReadSplitDir + DirToAppend
 
 	# define input name according to current seqlen setting
-	Input1 = Input1_Prefix + seqlen
-	Input2 = Input2_Prefix + seqlen
+
+	# Used for QC
+	#Input1 = Input1_Prefix + seqlen
+	#Input2 = Input2_Prefix + seqlen
+
 
 
 	print ("---------------")
@@ -166,10 +174,20 @@ for i in range (0, num_combs):
 		TrialErrorFile = NameToAppend + '_trial_' + counter + '_' + JobErrorFile
 		TrialOutputFile = NameToAppend + '_trial_' + counter + '_' + JobOutputFile
 		TrialErrDir = ErrTopDir
+
 	
 		# output file will be stored here.. This is to make sure that we don't overwrite into the same files. 
 		TrialOutputDir = ConfigOutputDir + '/trial' + counter
+		TrialInputDir = ConfigInputDir + '/trial' + counter
 		TrialReadSplitDir = ConfigReadSplitDir + '/trial' + counter
+
+		# Used for Filter Human... Todo: Need to figure out how to make it streamlined
+		#Input1 = TrialInputDir + '/fltd-1'
+		#Input2 = TrialInputDir + '/fltd-2' 
+
+		# Used for Dup... Todo: Need to figure out how to make it streamlined
+		Input1 = TrialInputDir + '/no-human-1'
+		Input2 = TrialInputDir + '/no-human-2' 
 	
 		# print statements, so the user can see submission progress
 		vars_str = ", ".join(str(x) for x in var_combs[i])
@@ -178,8 +196,9 @@ for i in range (0, num_combs):
 
 		# submit task to comet via Kepler
 	
-		#wf_module_name="NGS_preprocessing.DUP-TEST.CometExec."
-		wf_module_name="NGS_preprocessing.NGS-qa-filter.CometExec."
+		#wf_module_name="NGS_preprocessing.NGS-qa-filter.CometExec."
+		#wf_module_name="NGS_preprocessing.bowtie2.CometExec."
+		wf_module_name="NGS_preprocessing.DUP-TEST.CometExec."
 		#p = subprocess.Popen(	#### don't use Popen, this will create a separate process, not a call from same process.	
 
 		p = subprocess.check_call(
@@ -196,6 +215,7 @@ for i in range (0, num_combs):
 								'-' + wf_module_name + 'QueueType', QueueType,
 								'-' + wf_module_name + 'RemoteJobDir', TrialOutputDir,
 								'-' + wf_module_name + 'RemoteProjectDir', RemoteProjectDir,
+								'-' + wf_module_name + 'RemoteRefDir', RemoteRefDir,
 								'-' + wf_module_name + 'RemoteScriptDir', RemoteScriptDir,
 								'-' + wf_module_name + 'RemoteToolDir', RemoteToolDir,
 								'-' + wf_module_name + 'SampleName', SampleName,
@@ -209,7 +229,9 @@ for i in range (0, num_combs):
 								'-' + wf_module_name + 'ppn', ppn,
 								'-' + wf_module_name + 'seqlen', seqlen,
 								#'../Desktop/arvind_workflows/new_dup.xml'])		### call Kepler, specify workflow name here.
-								'../Desktop/arvind_workflows/comet_LS002_first1.xml'])		### call Kepler, specify workflow name here.
+								#'../Desktop/arvind_workflows/comet_LS002_first1.xml'])		### call Kepler, specify workflow name here.
+								#'../Desktop/arvind_workflows/comet_LS002_secondOnly.xml'])		### call Kepler, specify workflow name here.
+								'../Desktop/arvind_workflows/comet_LS002_thirdOnly.xml'])		### call Kepler, specify workflow name here.
 		print ("Submitted Combination # %d out of %d, Trial # %d out of %d: (%s)" % (i+1, num_combs, c, NumOfIterations, vars_str))
 		#subprocess.check_call(['sleep','15'])		# do we need to delay?...
 

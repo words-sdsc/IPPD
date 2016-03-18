@@ -127,10 +127,10 @@ Exit status: 0
 [https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s1-swap-what-is.html](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s1-swap-what-is.html)
 [http://www.cyberciti.biz/faq/linux-which-process-is-using-swap/](http://www.cyberciti.biz/faq/linux-which-process-is-using-swap/)
 
-Signals
+##### Signals
 [http://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_04.html](http://pubs.opengroup.org/onlinepubs/009695399/functions/xsh_chap02_04.html)
 
-Sockets
+##### Sockets
 [http://techpubs.sgi.com/library/dynaweb_docs/0530/SGI_Developer/books/IRIX_NetPG/sgi_html/ch04.html](http://techpubs.sgi.com/library/dynaweb_docs/0530/SGI_Developer/books/IRIX_NetPG/sgi_html/ch04.html)
 
 

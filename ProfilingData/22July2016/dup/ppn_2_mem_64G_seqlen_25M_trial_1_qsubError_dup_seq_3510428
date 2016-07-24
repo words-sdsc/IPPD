@@ -1,0 +1,92 @@
+	Command being timed: "./NGS-ann-program/BIN/cd-hit-dup -i ./data/no-human-1 -i2 ./data/no-human-2 -o ./outputDir/dup -u 50"
+	User time (seconds): 110.71
+	System time (seconds): 9.48
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:00.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 16388592
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 3
+	Minor (reclaiming a frame) page faults: 3612393
+	Voluntary context switches: 2783
+	Involuntary context switches: 552
+	Swaps: 0
+	File system inputs: 8250892
+	File system outputs: 5591765
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./NGS-ann-program/BIN/cd-hit-dup-PE-out.pl -i ./data/no-human-1 -j ./data/no-human-2 -c ./outputDir/dup.clstr -o ./outputDir/uniq-1 -p ./outputDir/uniq-2"
+	User time (seconds): 82.13
+	System time (seconds): 15.53
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:38.76
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2799624
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 447519
+	Voluntary context switches: 4084
+	Involuntary context switches: 134
+	Swaps: 0
+	File system inputs: 9771017
+	File system outputs: 8218810
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./NGS-ann-program/BIN/cd-hit-div.pl ./outputDir/uniq-1 ./read-split/split-1/split 512"
+	User time (seconds): 23.00
+	System time (seconds): 8.23
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:32.63
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4216
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1107
+	Voluntary context switches: 4205
+	Involuntary context switches: 623
+	Swaps: 0
+	File system inputs: 4109543
+	File system outputs: 4109405
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./NGS-ann-program/BIN/cd-hit-div.pl ./outputDir/uniq-2 ./read-split/split-2/split 512"
+	User time (seconds): 22.58
+	System time (seconds): 7.91
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:31.96
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4216
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1107
+	Voluntary context switches: 3793
+	Involuntary context switches: 80
+	Swaps: 0
+	File system inputs: 4109407
+	File system outputs: 4109405
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

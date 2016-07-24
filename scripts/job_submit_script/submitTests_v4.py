@@ -51,9 +51,12 @@ Define a list of values for each iterable parameters here
 # Example: ppn_list = [2, 4, 8, 12, 16, 20, 24]
 ppn_list = [24]
 mem_list = ["110G"]
-#seqlen_list = ["5M"]
+seqlen_list = ["5M"]
+
+
 #seqlen_list = ["5M", "10M"]
-seqlen_list = ["5M", "10M", "15M", "20M", "25M", "30M", "35M", "40M"]
+#seqlen_list = ["5M"
+#, "10M", "15M", "20M", "25M", "30M", "35M", "40M"]
 
 # test for functonality
 #ppn_list = [12]
@@ -87,7 +90,7 @@ Account = "ddp193"
 NumOfNodes = "1"
 Walltime = "24:00:00"
 QueueType = "compute"
-Mail = "a3rao@ucsd.edu"
+Mail = "a1singh@ucsd.edu"
 SchedulerType = "SLURM"
 TargetHost = "a3rao@comet.sdsc.edu"
 
@@ -231,7 +234,7 @@ for i in range (0, num_combs):
 								#'../Desktop/arvind_workflows/new_dup.xml'])		### call Kepler, specify workflow name here.
 								#'../Desktop/arvind_workflows/comet_LS002_first1.xml'])		### call Kepler, specify workflow name here.
 								#'../Desktop/arvind_workflows/comet_LS002_secondOnly.xml'])		### call Kepler, specify workflow name here.
-								'../Desktop/arvind_workflows/comet_LS002_thirdOnly.xml'])		### call Kepler, specify workflow name here.
+								'/home/comet/workflows/IPPD/sampleWorkflow/comet_LS002_thirdOnly.xml'])		### call Kepler, specify workflow name here.
 		print ("Submitted Combination # %d out of %d, Trial # %d out of %d: (%s)" % (i+1, num_combs, c, NumOfIterations, vars_str))
 		#subprocess.check_call(['sleep','15'])		# do we need to delay?...
 

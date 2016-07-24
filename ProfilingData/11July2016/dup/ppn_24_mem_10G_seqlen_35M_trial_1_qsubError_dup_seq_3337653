@@ -1,0 +1,100 @@
+Command terminated by signal 9
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-dup -i /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn24/mem10G/seqlen35M/trial1/no-human-1 -i2 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn24/mem10G/seqlen35M/trial1/no-human-2 -o /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/dup -u 50"
+	User time (seconds): 27.26
+	System time (seconds): 35.78
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:04.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10485944
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 6
+	Minor (reclaiming a frame) page faults: 2552852
+	Voluntary context switches: 97
+	Involuntary context switches: 27553
+	Swaps: 0
+	File system inputs: 9304
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+can not open /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/dup.clstr at /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-dup-PE-out.pl line 27.
+Command exited with non-zero status 2
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-dup-PE-out.pl -i /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn24/mem10G/seqlen35M/trial1/no-human-1 -j /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn24/mem10G/seqlen35M/trial1/no-human-2 -c /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/dup.clstr -o /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/uniq-1 -p /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/uniq-2"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 18%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2272
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 611
+	Voluntary context switches: 57
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 4496
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 2
+can not open input file at /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl line 18.
+Command exited with non-zero status 2
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/uniq-1 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/read-split/ppn24/mem10G/seqlen35M/trial1/split-1/split 512"
+	User time (seconds): 0.02
+	System time (seconds): 0.12
+	Percent of CPU this job got: 8%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2148
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 582
+	Voluntary context switches: 2078
+	Involuntary context switches: 1
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 2
+can not open input file at /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl line 18.
+Command exited with non-zero status 2
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn24/mem10G/seqlen35M/trial1/uniq-2 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/read-split/ppn24/mem10G/seqlen35M/trial1/split-2/split 512"
+	User time (seconds): 0.02
+	System time (seconds): 0.12
+	Percent of CPU this job got: 10%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.44
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2148
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 582
+	Voluntary context switches: 2061
+	Involuntary context switches: 3
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 2
+slurmstepd: Exceeded step memory limit at some point.

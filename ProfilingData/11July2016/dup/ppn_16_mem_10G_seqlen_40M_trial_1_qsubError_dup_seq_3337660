@@ -1,0 +1,4 @@
+slurmstepd: Job 3337660 exceeded memory limit (10487596 > 10485760), being killed
+slurmstepd: Exceeded job memory limit
+slurmstepd: *** JOB 3337660 ON comet-04-07 CANCELLED AT 2016-07-08T20:16:55 ***
+slurmstepd: Exceeded step memory limit at some point.

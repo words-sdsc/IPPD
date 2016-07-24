@@ -1,0 +1,92 @@
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-dup -i /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn20/mem90G/seqlen10M/trial1/no-human-1 -i2 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn20/mem90G/seqlen10M/trial1/no-human-2 -o /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/dup -u 50"
+	User time (seconds): 48.25
+	System time (seconds): 5.30
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:54.48
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6543116
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 6
+	Minor (reclaiming a frame) page faults: 1392083
+	Voluntary context switches: 81
+	Involuntary context switches: 156
+	Swaps: 0
+	File system inputs: 9264
+	File system outputs: 2179432
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-dup-PE-out.pl -i /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn20/mem90G/seqlen10M/trial1/no-human-1 -j /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/filter-human/ppn20/mem90G/seqlen10M/trial1/no-human-2 -c /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/dup.clstr -o /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/uniq-1 -p /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/uniq-2"
+	User time (seconds): 33.81
+	System time (seconds): 10.29
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:44.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 939380
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 176634
+	Voluntary context switches: 88
+	Involuntary context switches: 116
+	Swaps: 0
+	File system inputs: 4120
+	File system outputs: 3221456
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/uniq-1 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/read-split/ppn20/mem90G/seqlen10M/trial1/split-1/split 512"
+	User time (seconds): 9.20
+	System time (seconds): 4.62
+	Percent of CPU this job got: 86%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:16.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4220
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1108
+	Voluntary context switches: 3080
+	Involuntary context switches: 24
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1613832
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "/oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/NGS-ann-program/bin/cd-hit-div.pl /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/dup/ppn20/mem90G/seqlen10M/trial1/uniq-2 /oasis/scratch/comet/a3rao/temp_project/NGS-ann-project/LS002/read-split/ppn20/mem90G/seqlen10M/trial1/split-2/split 512"
+	User time (seconds): 9.30
+	System time (seconds): 4.53
+	Percent of CPU this job got: 87%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:15.85
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4220
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1108
+	Voluntary context switches: 3076
+	Involuntary context switches: 22
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1613824
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

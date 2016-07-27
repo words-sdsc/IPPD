@@ -8,7 +8,7 @@ checkpoint 1 (with numactl) :
 - features: #cpu, inputdataset size, TARGET: totaltime=user+sys
 - random forest with cross validation
 - * notebook: 22July Analysis-ModelTraining (CPU, DataSize, Y_Time) Notebook1.ipynb
-- * job submission script: submitTests_v5.py
+- * job submission script: submitTests_v5.py (moved to sibfolder under jobscripts folder)
 - * workflow name: comet_LS002_thirdOnly_V3.xml
 - * data folder: ProfilingData/22July2016
 

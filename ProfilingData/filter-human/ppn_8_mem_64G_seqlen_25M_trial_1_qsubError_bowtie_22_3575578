@@ -1,0 +1,27 @@
+# reads processed: 18881008
+# reads with at least one reported alignment: 4024 (0.02%)
+# reads that failed to align: 18876984 (99.98%)
+Reported 4024 alignments to 1 output stream(s)
+	Command being timed: "./NGS-ann-program/BIN/bowtie -f -k 1 -v 2 -p 16 ./NodeRefDir/human/human ./data/fltd-2 ./outputDir/human-hit-2"
+	User time (seconds): 2085.97
+	System time (seconds): 28.35
+	Percent of CPU this job got: 815%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:19.38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2419440
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 9815
+	Voluntary context switches: 704
+	Involuntary context switches: 164888
+	Swaps: 0
+	File system inputs: 8924613
+	File system outputs: 2046
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

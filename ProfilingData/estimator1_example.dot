@@ -1,17 +1,25 @@
 digraph Tree {
 node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
 edge [fontname=helvetica] ;
-0 [label=<Z &le; 120.065<br/>mse = 1106.3412<br/>samples = 4<br/>value = 149.6338>, fillcolor="#e5813989"] ;
-1 [label=<X &le; 9.5<br/>mse = 2.9444<br/>samples = 2<br/>value = 109.3433>, fillcolor="#e5813904"] ;
+0 [label=<Y &le; 2.3<br/>mse = 3198.5121<br/>samples = 6<br/>value = 105.6522>, fillcolor="#e5813953"] ;
+1 [label=<Y &le; 1.45<br/>mse = 99.7299<br/>samples = 3<br/>value = 60.822>, fillcolor="#e5813909"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label=<mse = 0.0<br/>samples = 1<br/>value = 108.13>, fillcolor="#e5813900"] ;
+2 [label=<X &le; 9.5<br/>mse = 1.5552<br/>samples = 2<br/>value = 55.86>, fillcolor="#e5813901"] ;
 1 -> 2 ;
-3 [label=<mse = 0.0<br/>samples = 1<br/>value = 111.77>, fillcolor="#e581390c"] ;
-1 -> 3 ;
-4 [label=<X &le; 9.5<br/>mse = 209.9943<br/>samples = 2<br/>value = 173.808>, fillcolor="#e58139d8"] ;
-0 -> 4 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-5 [label=<mse = 0.0<br/>samples = 1<br/>value = 185.64>, fillcolor="#e58139ff"] ;
-4 -> 5 ;
-6 [label=<mse = 0.0<br/>samples = 1<br/>value = 156.06>, fillcolor="#e581399e"] ;
-4 -> 6 ;
+3 [label=<mse = 0.0<br/>samples = 1<br/>value = 55.14>, fillcolor="#e5813900"] ;
+2 -> 3 ;
+4 [label=<mse = 0.0<br/>samples = 1<br/>value = 58.02>, fillcolor="#e5813905"] ;
+2 -> 4 ;
+5 [label=<mse = -0.0<br/>samples = 1<br/>value = 80.67>, fillcolor="#e581392a"] ;
+1 -> 5 ;
+6 [label=<Z &le; 146.915<br/>mse = 1419.5713<br/>samples = 3<br/>value = 161.69>, fillcolor="#e58139ae"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label=<mse = 0.0<br/>samples = 1<br/>value = 125.09>, fillcolor="#e5813972"] ;
+6 -> 7 ;
+8 [label=<Z &le; 189.04<br/>mse = 160.0225<br/>samples = 2<br/>value = 198.29>, fillcolor="#e58139ea"] ;
+6 -> 8 ;
+9 [label=<mse = 0.0<br/>samples = 1<br/>value = 185.64>, fillcolor="#e58139d6"] ;
+8 -> 9 ;
+10 [label=<mse = 0.0<br/>samples = 1<br/>value = 210.94>, fillcolor="#e58139ff"] ;
+8 -> 10 ;
 }

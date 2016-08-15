@@ -1,0 +1,23 @@
+	Command being timed: "./NGS-ann-program/BIN/velveth ./outputDir/assembly 55 -shortPaired -separate ./data/uniq-1 ./data/uniq-2"
+	User time (seconds): 1436.25
+	System time (seconds): 19.97
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 24:19.44
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 25706740
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 7332021
+	Voluntary context switches: 6397
+	Involuntary context switches: 3222
+	Swaps: 0
+	File system inputs: 35498092
+	File system outputs: 12862129
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

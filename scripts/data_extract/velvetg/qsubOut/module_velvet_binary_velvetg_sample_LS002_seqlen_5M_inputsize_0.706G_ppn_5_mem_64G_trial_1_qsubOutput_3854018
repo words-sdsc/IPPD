@@ -1,0 +1,220 @@
+[0.000000] Reading roadmap file ./outputDir/assembly/Roadmaps
+[5.980730] 7168898 roadmaps read
+[5.981142] Creating insertion markers
+[7.456037] Ordering insertion markers
+[9.537255] Counting preNodes
+[10.186574] 9410811 preNodes counted, creating them now
+[13.745540] Sequence 1000000 / 7168898
+[16.351363] Sequence 2000000 / 7168898
+[18.632724] Sequence 3000000 / 7168898
+[20.752821] Sequence 4000000 / 7168898
+[22.778951] Sequence 5000000 / 7168898
+[24.734853] Sequence 6000000 / 7168898
+[26.639320] Sequence 7000000 / 7168898
+[26.957640] Adjusting marker info...
+[27.467594] Connecting preNodes
+[27.767176] Connecting 1000000 / 7168898
+[28.135636] Connecting 2000000 / 7168898
+[28.536929] Connecting 3000000 / 7168898
+[28.957398] Connecting 4000000 / 7168898
+[29.392928] Connecting 5000000 / 7168898
+[29.838304] Connecting 6000000 / 7168898
+[30.287562] Connecting 7000000 / 7168898
+[30.363931] Cleaning up memory
+[30.364759] Done creating preGraph
+[30.364760] Concatenation...
+[33.498528] Renumbering preNodes
+[33.498534] Initial preNode count 9410811
+[33.671743] Destroyed 7849851 preNodes
+[33.671746] Concatenation over!
+[33.671747] Clipping short tips off preGraph
+[34.801878] Concatenation...
+[35.816517] Renumbering preNodes
+[35.816521] Initial preNode count 1560960
+[35.838613] Destroyed 1331184 preNodes
+[35.838617] Concatenation over!
+[35.838617] 1005902 tips cut off
+[35.838618] 229776 nodes left
+[35.838793] Writing into pregraph file ./outputDir/assembly/PreGraph...
+[37.926355] Reading read set file ./outputDir/assembly/Sequences;
+[38.615608] 7168898 sequences found
+[42.675404] Done
+[44.458813] Reading pre-graph file ./outputDir/assembly/PreGraph
+[44.609660] Graph has 229776 nodes and 7168898 sequences
+[45.774894] Scanning pre-graph file ./outputDir/assembly/PreGraph for k-mers
+[46.145081] 41650340 kmers found
+[47.991524] Sorting kmer occurence table ... 
+[69.919940] Sorting done.
+[69.919944] Computing acceleration table... 
+[70.238858] Computing offsets... 
+[70.468797] Ghost Threading through reads 0 / 7168898
+[84.947212] Ghost Threading through reads 1000000 / 7168898
+[99.463476] Ghost Threading through reads 2000000 / 7168898
+[114.006790] Ghost Threading through reads 3000000 / 7168898
+[128.555719] Ghost Threading through reads 4000000 / 7168898
+[143.115189] Ghost Threading through reads 5000000 / 7168898
+[157.668877] Ghost Threading through reads 6000000 / 7168898
+[172.222063] Ghost Threading through reads 7000000 / 7168898
+[174.699579]  === Ghost-Threaded in 104.230781 s
+[174.699583] Threading through reads 0 / 7168898
+[189.520911] Threading through reads 1000000 / 7168898
+[204.408198] Threading through reads 2000000 / 7168898
+[219.317419] Threading through reads 3000000 / 7168898
+[234.225922] Threading through reads 4000000 / 7168898
+[249.137729] Threading through reads 5000000 / 7168898
+[264.086488] Threading through reads 6000000 / 7168898
+[279.004562] Threading through reads 7000000 / 7168898
+[281.524153]  === Threaded in 106.824571 s
+[281.671814] Correcting graph with cutoff 0.200000
+[281.697763] Determining eligible starting points
+[281.890465] Done listing starting nodes
+[281.890468] Initializing todo lists
+[281.923901] Done with initilization
+[281.923905] Activating arc lookup table
+[281.968410] Done activating arc lookup table
+[282.083013] 10000 / 229776 nodes visited
+[282.209629] 20000 / 229776 nodes visited
+[282.333418] 30000 / 229776 nodes visited
+[282.446214] 40000 / 229776 nodes visited
+[282.546439] 50000 / 229776 nodes visited
+[282.625000] 60000 / 229776 nodes visited
+[282.683027] 70000 / 229776 nodes visited
+[282.722718] 80000 / 229776 nodes visited
+[282.745942] 90000 / 229776 nodes visited
+[282.761993] 100000 / 229776 nodes visited
+[282.771590] 110000 / 229776 nodes visited
+[282.782280] 120000 / 229776 nodes visited
+[282.786456] 130000 / 229776 nodes visited
+[282.790002] 140000 / 229776 nodes visited
+[282.793930] 150000 / 229776 nodes visited
+[282.797681] 160000 / 229776 nodes visited
+[282.801523] 170000 / 229776 nodes visited
+[282.805671] 180000 / 229776 nodes visited
+[282.809789] 190000 / 229776 nodes visited
+[282.813931] 200000 / 229776 nodes visited
+[282.818080] 210000 / 229776 nodes visited
+[282.822195] 220000 / 229776 nodes visited
+[282.826318] 230000 / 229776 nodes visited
+[282.826528] Concatenation...
+[282.845477] Renumbering nodes
+[282.845480] Initial node count 229776
+[282.867962] Removed 24480 null nodes
+[282.867970] Concatenation over!
+[282.867971] Clipping short tips off graph, drastic
+[283.258830] Concatenation...
+[283.343016] Renumbering nodes
+[283.343020] Initial node count 205296
+[283.360540] Removed 45966 null nodes
+[283.360542] Concatenation over!
+[283.360543] 159330 nodes left
+[283.360705] Writing into graph file ./outputDir/assembly/Graph2...
+[288.188114] Measuring median coverage depth...
+[288.373916] Median coverage depth = 3.646497
+[288.374010] Removing contigs with coverage < 1.823248...
+[288.423059] Concatenation...
+[288.501022] Renumbering nodes
+[288.501026] Initial node count 159330
+[288.513504] Removed 48708 null nodes
+[288.513507] Concatenation over!
+[288.528858] Concatenation...
+[288.537880] Renumbering nodes
+[288.537883] Initial node count 110622
+[288.537990] Removed 0 null nodes
+[288.537991] Concatenation over!
+[288.537996] Clipping short tips off graph, drastic
+[288.623171] Concatenation...
+[288.632719] Renumbering nodes
+[288.632721] Initial node count 110622
+[288.638744] Removed 744 null nodes
+[288.638745] Concatenation over!
+[288.638746] 109878 nodes left
+[288.638747] Read coherency...
+[288.641132] Identifying unique nodes
+[288.655235] Done, 83173 unique nodes counted
+[288.655238] Trimming read tips
+[288.665170] Renumbering nodes
+[288.665172] Initial node count 109878
+[288.665281] Removed 0 null nodes
+[288.665282] Confronted to 0 multiple hits and 0 null over 0
+[288.665283] Read coherency over!
+[288.706395] Starting pebble resolution...
+[288.739964] Computing read to node mapping array sizes
+[288.888418] Computing read to node mappings
+[290.084731] Estimating library insert lengths...
+[290.117694] Done
+[290.117810] Computing direct node to node mappings
+[290.129801] Scaffolding node -100000
+[290.145232] Scaffolding node -90000
+[290.167540] Scaffolding node -80000
+[290.187426] Scaffolding node -70000
+[290.209120] Scaffolding node -60000
+[290.232004] Scaffolding node -50000
+[290.256445] Scaffolding node -40000
+[290.281608] Scaffolding node -30000
+[290.306798] Scaffolding node -20000
+[290.332210] Scaffolding node -10000
+[290.355209] Scaffolding node 0
+[290.377164] Scaffolding node 10000
+[290.404426] Scaffolding node 20000
+[290.431996] Scaffolding node 30000
+[290.459633] Scaffolding node 40000
+[290.486531] Scaffolding node 50000
+[290.512343] Scaffolding node 60000
+[290.536690] Scaffolding node 70000
+[290.559140] Scaffolding node 80000
+[290.579948] Scaffolding node 90000
+[290.598618] Scaffolding node 100000
+[290.618491]  === Nodes Scaffolded in 0.500680 s
+[290.705078] Preparing to correct graph with cutoff 0.200000
+[290.996837] Cleaning memory
+[290.997037] Deactivating local correction settings
+[290.998376] Pebble done.
+[290.998378] Starting pebble resolution...
+[291.024373] Computing read to node mapping array sizes
+[291.169581] Computing read to node mappings
+[292.381445] Estimating library insert lengths...
+[292.414915] Done
+[292.415027] Computing direct node to node mappings
+[292.430704] Scaffolding node -100000
+[292.450419] Scaffolding node -90000
+[292.471391] Scaffolding node -80000
+[292.493600] Scaffolding node -70000
+[292.515890] Scaffolding node -60000
+[292.538503] Scaffolding node -50000
+[292.560653] Scaffolding node -40000
+[292.581635] Scaffolding node -30000
+[292.601932] Scaffolding node -20000
+[292.620656] Scaffolding node -10000
+[292.636791] Scaffolding node 0
+[292.651446] Scaffolding node 10000
+[292.671229] Scaffolding node 20000
+[292.692940] Scaffolding node 30000
+[292.715420] Scaffolding node 40000
+[292.738979] Scaffolding node 50000
+[292.763372] Scaffolding node 60000
+[292.787024] Scaffolding node 70000
+[292.810566] Scaffolding node 80000
+[292.833060] Scaffolding node 90000
+[292.854764] Scaffolding node 100000
+[292.876127]  === Nodes Scaffolded in 0.461099 s
+[292.929155] Preparing to correct graph with cutoff 0.200000
+[293.046564] Cleaning memory
+[293.046593] Deactivating local correction settings
+[293.047978] Pebble done.
+[293.047981] Concatenation...
+[293.063681] Renumbering nodes
+[293.063683] Initial node count 109878
+[293.069460] Removed 16087 null nodes
+[293.070066] Concatenation over!
+[293.070067] Removing reference contigs with coverage < 1.823248...
+[293.085287] Concatenation...
+[293.092338] Renumbering nodes
+[293.092341] Initial node count 93791
+[293.092441] Removed 0 null nodes
+[293.093301] Concatenation over!
+[293.117586] Writing contigs into ./outputDir/assembly/contigs.fa...
+[295.617548] Writing into stats file ./outputDir/assembly/stats.txt...
+[297.963315] Writing into graph file ./outputDir/assembly/LastGraph...
+[301.935648] Estimated Coverage = 3.646497
+[301.935656] Estimated Coverage cutoff = 1.823248
+Final graph has 93791 nodes and n50 of 624, max 11782, total 34703763, using 4095940/7168898 reads

@@ -1,0 +1,679 @@
+[0.000000] Reading roadmap file ./outputDir/assembly/Roadmaps
+[184.991724] 59691230 roadmaps read
+[184.994072] Creating insertion markers
+[222.863947] Ordering insertion markers
+[311.699727] Counting preNodes
+[325.254263] 68514948 preNodes counted, creating them now
+[348.064621] Sequence 1000000 / 59691230
+[362.836953] Sequence 2000000 / 59691230
+[374.454312] Sequence 3000000 / 59691230
+[384.425322] Sequence 4000000 / 59691230
+[393.398576] Sequence 5000000 / 59691230
+[401.712689] Sequence 6000000 / 59691230
+[409.534971] Sequence 7000000 / 59691230
+[417.002100] Sequence 8000000 / 59691230
+[424.207779] Sequence 9000000 / 59691230
+[431.198633] Sequence 10000000 / 59691230
+[438.023248] Sequence 11000000 / 59691230
+[444.699096] Sequence 12000000 / 59691230
+[451.264993] Sequence 13000000 / 59691230
+[457.727322] Sequence 14000000 / 59691230
+[464.104699] Sequence 15000000 / 59691230
+[470.401935] Sequence 16000000 / 59691230
+[476.636757] Sequence 17000000 / 59691230
+[482.810210] Sequence 18000000 / 59691230
+[488.938243] Sequence 19000000 / 59691230
+[495.022882] Sequence 20000000 / 59691230
+[501.060944] Sequence 21000000 / 59691230
+[507.061515] Sequence 22000000 / 59691230
+[513.029910] Sequence 23000000 / 59691230
+[518.967366] Sequence 24000000 / 59691230
+[524.876950] Sequence 25000000 / 59691230
+[530.761687] Sequence 26000000 / 59691230
+[536.618590] Sequence 27000000 / 59691230
+[542.457343] Sequence 28000000 / 59691230
+[548.272398] Sequence 29000000 / 59691230
+[554.065809] Sequence 30000000 / 59691230
+[559.844683] Sequence 31000000 / 59691230
+[565.603722] Sequence 32000000 / 59691230
+[571.346708] Sequence 33000000 / 59691230
+[577.078950] Sequence 34000000 / 59691230
+[582.793775] Sequence 35000000 / 59691230
+[588.488168] Sequence 36000000 / 59691230
+[594.169468] Sequence 37000000 / 59691230
+[599.828539] Sequence 38000000 / 59691230
+[605.481657] Sequence 39000000 / 59691230
+[611.142177] Sequence 40000000 / 59691230
+[616.788883] Sequence 41000000 / 59691230
+[622.424502] Sequence 42000000 / 59691230
+[628.056182] Sequence 43000000 / 59691230
+[633.682301] Sequence 44000000 / 59691230
+[639.307271] Sequence 45000000 / 59691230
+[644.918741] Sequence 46000000 / 59691230
+[650.523228] Sequence 47000000 / 59691230
+[656.121824] Sequence 48000000 / 59691230
+[661.712556] Sequence 49000000 / 59691230
+[667.297967] Sequence 50000000 / 59691230
+[672.879954] Sequence 51000000 / 59691230
+[678.453331] Sequence 52000000 / 59691230
+[684.019541] Sequence 53000000 / 59691230
+[689.586664] Sequence 54000000 / 59691230
+[695.144368] Sequence 55000000 / 59691230
+[700.702246] Sequence 56000000 / 59691230
+[706.253224] Sequence 57000000 / 59691230
+[711.796236] Sequence 58000000 / 59691230
+[717.340060] Sequence 59000000 / 59691230
+[721.165882] Adjusting marker info...
+[734.239317] Connecting preNodes
+[736.177955] Connecting 1000000 / 59691230
+[738.061399] Connecting 2000000 / 59691230
+[739.947670] Connecting 3000000 / 59691230
+[741.855222] Connecting 4000000 / 59691230
+[743.793055] Connecting 5000000 / 59691230
+[745.757027] Connecting 6000000 / 59691230
+[747.736166] Connecting 7000000 / 59691230
+[749.733905] Connecting 8000000 / 59691230
+[751.739065] Connecting 9000000 / 59691230
+[753.768530] Connecting 10000000 / 59691230
+[755.822159] Connecting 11000000 / 59691230
+[757.892824] Connecting 12000000 / 59691230
+[759.974477] Connecting 13000000 / 59691230
+[762.066167] Connecting 14000000 / 59691230
+[764.174486] Connecting 15000000 / 59691230
+[766.285913] Connecting 16000000 / 59691230
+[768.413248] Connecting 17000000 / 59691230
+[770.549623] Connecting 18000000 / 59691230
+[772.700303] Connecting 19000000 / 59691230
+[774.862734] Connecting 20000000 / 59691230
+[777.035473] Connecting 21000000 / 59691230
+[779.211906] Connecting 22000000 / 59691230
+[781.404193] Connecting 23000000 / 59691230
+[783.599717] Connecting 24000000 / 59691230
+[785.784262] Connecting 25000000 / 59691230
+[787.982379] Connecting 26000000 / 59691230
+[790.182148] Connecting 27000000 / 59691230
+[792.391931] Connecting 28000000 / 59691230
+[794.613068] Connecting 29000000 / 59691230
+[796.857956] Connecting 30000000 / 59691230
+[799.108228] Connecting 31000000 / 59691230
+[801.362595] Connecting 32000000 / 59691230
+[803.624373] Connecting 33000000 / 59691230
+[805.895734] Connecting 34000000 / 59691230
+[808.168262] Connecting 35000000 / 59691230
+[810.446722] Connecting 36000000 / 59691230
+[812.727056] Connecting 37000000 / 59691230
+[815.005547] Connecting 38000000 / 59691230
+[817.284887] Connecting 39000000 / 59691230
+[819.609972] Connecting 40000000 / 59691230
+[821.940902] Connecting 41000000 / 59691230
+[824.254473] Connecting 42000000 / 59691230
+[826.577504] Connecting 43000000 / 59691230
+[828.909982] Connecting 44000000 / 59691230
+[831.249550] Connecting 45000000 / 59691230
+[833.594730] Connecting 46000000 / 59691230
+[835.960369] Connecting 47000000 / 59691230
+[838.327161] Connecting 48000000 / 59691230
+[840.695856] Connecting 49000000 / 59691230
+[843.077571] Connecting 50000000 / 59691230
+[845.472351] Connecting 51000000 / 59691230
+[847.868656] Connecting 52000000 / 59691230
+[850.267051] Connecting 53000000 / 59691230
+[852.661855] Connecting 54000000 / 59691230
+[855.058419] Connecting 55000000 / 59691230
+[857.469668] Connecting 56000000 / 59691230
+[859.869892] Connecting 57000000 / 59691230
+[862.268696] Connecting 58000000 / 59691230
+[864.673540] Connecting 59000000 / 59691230
+[866.335257] Cleaning up memory
+[866.346506] Done creating preGraph
+[866.346512] Concatenation...
+[916.160504] Renumbering preNodes
+[916.160513] Initial preNode count 68514948
+[919.744141] Destroyed 56856762 preNodes
+[919.744149] Concatenation over!
+[919.744151] Clipping short tips off preGraph
+[935.431567] Concatenation...
+[951.380999] Renumbering preNodes
+[951.381008] Initial preNode count 11658186
+[951.928512] Destroyed 10162890 preNodes
+[951.928520] Concatenation over!
+[951.928521] 6075632 tips cut off
+[951.928522] 1495296 nodes left
+[951.928843] Writing into pregraph file ./outputDir/assembly/PreGraph...
+[981.162226] Reading read set file ./outputDir/assembly/Sequences;
+[995.286854] 59691230 sequences found
+[1079.482556] Done
+[1120.507283] Reading pre-graph file ./outputDir/assembly/PreGraph
+[1120.509237] Graph has 1495296 nodes and 59691230 sequences
+[1137.239478] Scanning pre-graph file ./outputDir/assembly/PreGraph for k-mers
+[1142.607298] 208353385 kmers found
+[1166.950204] Sorting kmer occurence table ... 
+[1448.449610] Sorting done.
+[1448.449619] Computing acceleration table... 
+[1450.926426] Computing offsets... 
+[1453.995023] Ghost Threading through reads 0 / 59691230
+[1489.022993] Ghost Threading through reads 1000000 / 59691230
+[1524.236711] Ghost Threading through reads 2000000 / 59691230
+[1559.482309] Ghost Threading through reads 3000000 / 59691230
+[1594.826591] Ghost Threading through reads 4000000 / 59691230
+[1630.226426] Ghost Threading through reads 5000000 / 59691230
+[1665.664279] Ghost Threading through reads 6000000 / 59691230
+[1701.050373] Ghost Threading through reads 7000000 / 59691230
+[1736.440991] Ghost Threading through reads 8000000 / 59691230
+[1771.845129] Ghost Threading through reads 9000000 / 59691230
+[1807.233820] Ghost Threading through reads 10000000 / 59691230
+[1842.641569] Ghost Threading through reads 11000000 / 59691230
+[1878.040594] Ghost Threading through reads 12000000 / 59691230
+[1913.481232] Ghost Threading through reads 13000000 / 59691230
+[1948.896563] Ghost Threading through reads 14000000 / 59691230
+[1984.339311] Ghost Threading through reads 15000000 / 59691230
+[2019.760754] Ghost Threading through reads 16000000 / 59691230
+[2055.202805] Ghost Threading through reads 17000000 / 59691230
+[2090.599399] Ghost Threading through reads 18000000 / 59691230
+[2126.024768] Ghost Threading through reads 19000000 / 59691230
+[2160.574960] Ghost Threading through reads 20000000 / 59691230
+[2194.110466] Ghost Threading through reads 21000000 / 59691230
+[2227.565372] Ghost Threading through reads 22000000 / 59691230
+[2261.047232] Ghost Threading through reads 23000000 / 59691230
+[2294.508272] Ghost Threading through reads 24000000 / 59691230
+[2327.973779] Ghost Threading through reads 25000000 / 59691230
+[2361.450218] Ghost Threading through reads 26000000 / 59691230
+[2394.921702] Ghost Threading through reads 27000000 / 59691230
+[2428.398452] Ghost Threading through reads 28000000 / 59691230
+[2461.871330] Ghost Threading through reads 29000000 / 59691230
+[2495.337506] Ghost Threading through reads 30000000 / 59691230
+[2528.814999] Ghost Threading through reads 31000000 / 59691230
+[2562.279838] Ghost Threading through reads 32000000 / 59691230
+[2595.738607] Ghost Threading through reads 33000000 / 59691230
+[2629.211878] Ghost Threading through reads 34000000 / 59691230
+[2662.686700] Ghost Threading through reads 35000000 / 59691230
+[2696.145142] Ghost Threading through reads 36000000 / 59691230
+[2729.599605] Ghost Threading through reads 37000000 / 59691230
+[2762.971273] Ghost Threading through reads 38000000 / 59691230
+[2796.353365] Ghost Threading through reads 39000000 / 59691230
+[2829.671961] Ghost Threading through reads 40000000 / 59691230
+[2863.008831] Ghost Threading through reads 41000000 / 59691230
+[2896.350589] Ghost Threading through reads 42000000 / 59691230
+[2929.748262] Ghost Threading through reads 43000000 / 59691230
+[2963.200982] Ghost Threading through reads 44000000 / 59691230
+[2996.691131] Ghost Threading through reads 45000000 / 59691230
+[3030.137749] Ghost Threading through reads 46000000 / 59691230
+[3063.587427] Ghost Threading through reads 47000000 / 59691230
+[3097.032395] Ghost Threading through reads 48000000 / 59691230
+[3130.494236] Ghost Threading through reads 49000000 / 59691230
+[3163.940823] Ghost Threading through reads 50000000 / 59691230
+[3197.406882] Ghost Threading through reads 51000000 / 59691230
+[3230.862476] Ghost Threading through reads 52000000 / 59691230
+[3264.305930] Ghost Threading through reads 53000000 / 59691230
+[3297.786573] Ghost Threading through reads 54000000 / 59691230
+[3331.249416] Ghost Threading through reads 55000000 / 59691230
+[3364.730294] Ghost Threading through reads 56000000 / 59691230
+[3398.212059] Ghost Threading through reads 57000000 / 59691230
+[3431.677224] Ghost Threading through reads 58000000 / 59691230
+[3465.159429] Ghost Threading through reads 59000000 / 59691230
+[3488.613778]  === Ghost-Threaded in 2034.618755 s
+[3488.613788] Threading through reads 0 / 59691230
+[3522.742629] Threading through reads 1000000 / 59691230
+[3557.063623] Threading through reads 2000000 / 59691230
+[3591.395459] Threading through reads 3000000 / 59691230
+[3625.806617] Threading through reads 4000000 / 59691230
+[3660.276026] Threading through reads 5000000 / 59691230
+[3694.759302] Threading through reads 6000000 / 59691230
+[3729.231446] Threading through reads 7000000 / 59691230
+[3763.705731] Threading through reads 8000000 / 59691230
+[3798.204000] Threading through reads 9000000 / 59691230
+[3832.699550] Threading through reads 10000000 / 59691230
+[3867.216796] Threading through reads 11000000 / 59691230
+[3901.733663] Threading through reads 12000000 / 59691230
+[3936.255198] Threading through reads 13000000 / 59691230
+[3970.764644] Threading through reads 14000000 / 59691230
+[4005.312114] Threading through reads 15000000 / 59691230
+[4039.826458] Threading through reads 16000000 / 59691230
+[4074.377595] Threading through reads 17000000 / 59691230
+[4108.888787] Threading through reads 18000000 / 59691230
+[4143.421064] Threading through reads 19000000 / 59691230
+[4177.963435] Threading through reads 20000000 / 59691230
+[4212.493190] Threading through reads 21000000 / 59691230
+[4247.000823] Threading through reads 22000000 / 59691230
+[4281.548753] Threading through reads 23000000 / 59691230
+[4316.078190] Threading through reads 24000000 / 59691230
+[4350.618605] Threading through reads 25000000 / 59691230
+[4385.164338] Threading through reads 26000000 / 59691230
+[4419.712228] Threading through reads 27000000 / 59691230
+[4454.273958] Threading through reads 28000000 / 59691230
+[4488.813943] Threading through reads 29000000 / 59691230
+[4523.349277] Threading through reads 30000000 / 59691230
+[4557.899691] Threading through reads 31000000 / 59691230
+[4592.427720] Threading through reads 32000000 / 59691230
+[4626.955187] Threading through reads 33000000 / 59691230
+[4661.502540] Threading through reads 34000000 / 59691230
+[4696.055822] Threading through reads 35000000 / 59691230
+[4730.580055] Threading through reads 36000000 / 59691230
+[4765.098453] Threading through reads 37000000 / 59691230
+[4799.529861] Threading through reads 38000000 / 59691230
+[4833.985818] Threading through reads 39000000 / 59691230
+[4868.382077] Threading through reads 40000000 / 59691230
+[4902.804682] Threading through reads 41000000 / 59691230
+[4937.213159] Threading through reads 42000000 / 59691230
+[4971.672986] Threading through reads 43000000 / 59691230
+[5006.179762] Threading through reads 44000000 / 59691230
+[5040.712249] Threading through reads 45000000 / 59691230
+[5075.201253] Threading through reads 46000000 / 59691230
+[5109.703947] Threading through reads 47000000 / 59691230
+[5144.191396] Threading through reads 48000000 / 59691230
+[5178.708290] Threading through reads 49000000 / 59691230
+[5213.207727] Threading through reads 50000000 / 59691230
+[5247.711529] Threading through reads 51000000 / 59691230
+[5282.215911] Threading through reads 52000000 / 59691230
+[5316.706007] Threading through reads 53000000 / 59691230
+[5351.230486] Threading through reads 54000000 / 59691230
+[5385.726516] Threading through reads 55000000 / 59691230
+[5420.259173] Threading through reads 56000000 / 59691230
+[5454.804204] Threading through reads 57000000 / 59691230
+[5489.325741] Threading through reads 58000000 / 59691230
+[5523.870416] Threading through reads 59000000 / 59691230
+[5547.720792]  === Threaded in 2059.107003 s
+[5554.672911] Correcting graph with cutoff 0.200000
+[5554.965022] Determining eligible starting points
+[5559.195765] Done listing starting nodes
+[5559.195771] Initializing todo lists
+[5559.769753] Done with initilization
+[5559.769760] Activating arc lookup table
+[5560.284341] Done activating arc lookup table
+[5560.675335] 10000 / 1495296 nodes visited
+[5561.026796] 20000 / 1495296 nodes visited
+[5561.363783] 30000 / 1495296 nodes visited
+[5561.716523] 40000 / 1495296 nodes visited
+[5562.198464] 50000 / 1495296 nodes visited
+[5562.754175] 60000 / 1495296 nodes visited
+[5563.289898] 70000 / 1495296 nodes visited
+[5563.708839] 80000 / 1495296 nodes visited
+[5564.065304] 90000 / 1495296 nodes visited
+[5564.423191] 100000 / 1495296 nodes visited
+[5564.800260] 110000 / 1495296 nodes visited
+[5565.160907] 120000 / 1495296 nodes visited
+[5565.490542] 130000 / 1495296 nodes visited
+[5565.795874] 140000 / 1495296 nodes visited
+[5566.123816] 150000 / 1495296 nodes visited
+[5566.417684] 160000 / 1495296 nodes visited
+[5566.743924] 170000 / 1495296 nodes visited
+[5567.081057] 180000 / 1495296 nodes visited
+[5567.429079] 190000 / 1495296 nodes visited
+[5567.801809] 200000 / 1495296 nodes visited
+[5568.138629] 210000 / 1495296 nodes visited
+[5568.453833] 220000 / 1495296 nodes visited
+[5568.760464] 230000 / 1495296 nodes visited
+[5569.070426] 240000 / 1495296 nodes visited
+[5569.362215] 250000 / 1495296 nodes visited
+[5569.644487] 260000 / 1495296 nodes visited
+[5569.960698] 270000 / 1495296 nodes visited
+[5570.262893] 280000 / 1495296 nodes visited
+[5570.567211] 290000 / 1495296 nodes visited
+[5570.880287] 300000 / 1495296 nodes visited
+[5571.206283] 310000 / 1495296 nodes visited
+[5571.505648] 320000 / 1495296 nodes visited
+[5571.801250] 330000 / 1495296 nodes visited
+[5572.105429] 340000 / 1495296 nodes visited
+[5572.397139] 350000 / 1495296 nodes visited
+[5572.720078] 360000 / 1495296 nodes visited
+[5573.009435] 370000 / 1495296 nodes visited
+[5573.322164] 380000 / 1495296 nodes visited
+[5573.612567] 390000 / 1495296 nodes visited
+[5573.882567] 400000 / 1495296 nodes visited
+[5574.183321] 410000 / 1495296 nodes visited
+[5574.458356] 420000 / 1495296 nodes visited
+[5574.723413] 430000 / 1495296 nodes visited
+[5574.986311] 440000 / 1495296 nodes visited
+[5575.253908] 450000 / 1495296 nodes visited
+[5575.525413] 460000 / 1495296 nodes visited
+[5575.771046] 470000 / 1495296 nodes visited
+[5576.028819] 480000 / 1495296 nodes visited
+[5576.278311] 490000 / 1495296 nodes visited
+[5576.543881] 500000 / 1495296 nodes visited
+[5576.817375] 510000 / 1495296 nodes visited
+[5577.066589] 520000 / 1495296 nodes visited
+[5577.320276] 530000 / 1495296 nodes visited
+[5577.587512] 540000 / 1495296 nodes visited
+[5577.851069] 550000 / 1495296 nodes visited
+[5578.133822] 560000 / 1495296 nodes visited
+[5578.418163] 570000 / 1495296 nodes visited
+[5578.668521] 580000 / 1495296 nodes visited
+[5578.926475] 590000 / 1495296 nodes visited
+[5579.177508] 600000 / 1495296 nodes visited
+[5579.423181] 610000 / 1495296 nodes visited
+[5579.677731] 620000 / 1495296 nodes visited
+[5579.921267] 630000 / 1495296 nodes visited
+[5580.184609] 640000 / 1495296 nodes visited
+[5580.440167] 650000 / 1495296 nodes visited
+[5580.715447] 660000 / 1495296 nodes visited
+[5580.971626] 670000 / 1495296 nodes visited
+[5581.223146] 680000 / 1495296 nodes visited
+[5581.503974] 690000 / 1495296 nodes visited
+[5581.779637] 700000 / 1495296 nodes visited
+[5582.038157] 710000 / 1495296 nodes visited
+[5582.301667] 720000 / 1495296 nodes visited
+[5582.549427] 730000 / 1495296 nodes visited
+[5582.798483] 740000 / 1495296 nodes visited
+[5583.064307] 750000 / 1495296 nodes visited
+[5583.326738] 760000 / 1495296 nodes visited
+[5583.572395] 770000 / 1495296 nodes visited
+[5583.848469] 780000 / 1495296 nodes visited
+[5584.150466] 790000 / 1495296 nodes visited
+[5584.418748] 800000 / 1495296 nodes visited
+[5584.682594] 810000 / 1495296 nodes visited
+[5584.931345] 820000 / 1495296 nodes visited
+[5585.185382] 830000 / 1495296 nodes visited
+[5585.454438] 840000 / 1495296 nodes visited
+[5585.716740] 850000 / 1495296 nodes visited
+[5585.972672] 860000 / 1495296 nodes visited
+[5586.234281] 870000 / 1495296 nodes visited
+[5586.490075] 880000 / 1495296 nodes visited
+[5586.756640] 890000 / 1495296 nodes visited
+[5587.025900] 900000 / 1495296 nodes visited
+[5587.290889] 910000 / 1495296 nodes visited
+[5587.565524] 920000 / 1495296 nodes visited
+[5587.831679] 930000 / 1495296 nodes visited
+[5588.106183] 940000 / 1495296 nodes visited
+[5588.369472] 950000 / 1495296 nodes visited
+[5588.630906] 960000 / 1495296 nodes visited
+[5588.918820] 970000 / 1495296 nodes visited
+[5589.220280] 980000 / 1495296 nodes visited
+[5589.847710] 990000 / 1495296 nodes visited
+[5590.071273] 1000000 / 1495296 nodes visited
+[5590.222742] 1010000 / 1495296 nodes visited
+[5590.383438] 1020000 / 1495296 nodes visited
+[5590.539525] 1030000 / 1495296 nodes visited
+[5590.726223] 1040000 / 1495296 nodes visited
+[5590.942465] 1050000 / 1495296 nodes visited
+[5591.159031] 1060000 / 1495296 nodes visited
+[5591.401076] 1070000 / 1495296 nodes visited
+[5591.639854] 1080000 / 1495296 nodes visited
+[5591.849566] 1090000 / 1495296 nodes visited
+[5592.068650] 1100000 / 1495296 nodes visited
+[5592.279687] 1110000 / 1495296 nodes visited
+[5592.490152] 1120000 / 1495296 nodes visited
+[5592.690267] 1130000 / 1495296 nodes visited
+[5592.863040] 1140000 / 1495296 nodes visited
+[5593.031804] 1150000 / 1495296 nodes visited
+[5593.186995] 1160000 / 1495296 nodes visited
+[5593.320070] 1170000 / 1495296 nodes visited
+[5593.439059] 1180000 / 1495296 nodes visited
+[5593.566521] 1190000 / 1495296 nodes visited
+[5593.682743] 1200000 / 1495296 nodes visited
+[5593.772472] 1210000 / 1495296 nodes visited
+[5593.866228] 1220000 / 1495296 nodes visited
+[5593.951570] 1230000 / 1495296 nodes visited
+[5594.029145] 1240000 / 1495296 nodes visited
+[5594.093376] 1250000 / 1495296 nodes visited
+[5594.156870] 1260000 / 1495296 nodes visited
+[5594.208872] 1270000 / 1495296 nodes visited
+[5594.260892] 1280000 / 1495296 nodes visited
+[5594.315161] 1290000 / 1495296 nodes visited
+[5594.355785] 1300000 / 1495296 nodes visited
+[5594.391254] 1310000 / 1495296 nodes visited
+[5594.418016] 1320000 / 1495296 nodes visited
+[5594.442079] 1330000 / 1495296 nodes visited
+[5594.466545] 1340000 / 1495296 nodes visited
+[5594.489064] 1350000 / 1495296 nodes visited
+[5594.515132] 1360000 / 1495296 nodes visited
+[5594.536359] 1370000 / 1495296 nodes visited
+[5594.559672] 1380000 / 1495296 nodes visited
+[5594.581080] 1390000 / 1495296 nodes visited
+[5594.600966] 1400000 / 1495296 nodes visited
+[5594.625159] 1410000 / 1495296 nodes visited
+[5594.650560] 1420000 / 1495296 nodes visited
+[5594.674013] 1430000 / 1495296 nodes visited
+[5594.687810] 1440000 / 1495296 nodes visited
+[5594.696737] 1450000 / 1495296 nodes visited
+[5594.705816] 1460000 / 1495296 nodes visited
+[5594.715454] 1470000 / 1495296 nodes visited
+[5594.724959] 1480000 / 1495296 nodes visited
+[5594.734490] 1490000 / 1495296 nodes visited
+[5594.743935] 1500000 / 1495296 nodes visited
+[5594.753343] 1510000 / 1495296 nodes visited
+[5594.762402] 1520000 / 1495296 nodes visited
+[5594.771572] 1530000 / 1495296 nodes visited
+[5594.780439] 1540000 / 1495296 nodes visited
+[5594.789669] 1550000 / 1495296 nodes visited
+[5594.799453] 1560000 / 1495296 nodes visited
+[5594.808792] 1570000 / 1495296 nodes visited
+[5594.818094] 1580000 / 1495296 nodes visited
+[5594.827259] 1590000 / 1495296 nodes visited
+[5594.836301] 1600000 / 1495296 nodes visited
+[5594.845802] 1610000 / 1495296 nodes visited
+[5594.855249] 1620000 / 1495296 nodes visited
+[5594.864404] 1630000 / 1495296 nodes visited
+[5594.873643] 1640000 / 1495296 nodes visited
+[5594.882925] 1650000 / 1495296 nodes visited
+[5594.892259] 1660000 / 1495296 nodes visited
+[5594.901562] 1670000 / 1495296 nodes visited
+[5594.911092] 1680000 / 1495296 nodes visited
+[5594.920415] 1690000 / 1495296 nodes visited
+[5594.930063] 1700000 / 1495296 nodes visited
+[5594.939668] 1710000 / 1495296 nodes visited
+[5594.949434] 1720000 / 1495296 nodes visited
+[5594.959218] 1730000 / 1495296 nodes visited
+[5594.968944] 1740000 / 1495296 nodes visited
+[5594.972028] Concatenation...
+[5595.264227] Renumbering nodes
+[5595.264233] Initial node count 1495296
+[5595.557036] Removed 345444 null nodes
+[5595.557050] Concatenation over!
+[5595.557052] Clipping short tips off graph, drastic
+[5598.108034] Concatenation...
+[5599.633399] Renumbering nodes
+[5599.633407] Initial node count 1149852
+[5599.827139] Removed 260416 null nodes
+[5599.827144] Concatenation over!
+[5599.827146] 889436 nodes left
+[5599.827500] Writing into graph file ./outputDir/assembly/Graph2...
+[5687.549803] Measuring median coverage depth...
+[5690.442226] Median coverage depth = 5.064706
+[5690.442396] Removing contigs with coverage < 2.532353...
+[5691.192307] Concatenation...
+[5697.910673] Renumbering nodes
+[5697.910681] Initial node count 889436
+[5697.994166] Removed 519788 null nodes
+[5697.994170] Concatenation over!
+[5698.090124] Concatenation...
+[5698.170835] Renumbering nodes
+[5698.170840] Initial node count 369648
+[5698.171818] Removed 0 null nodes
+[5698.171819] Concatenation over!
+[5698.171830] Clipping short tips off graph, drastic
+[5698.659702] Concatenation...
+[5698.886938] Renumbering nodes
+[5698.886944] Initial node count 369648
+[5698.963836] Removed 12645 null nodes
+[5698.963840] Concatenation over!
+[5698.963841] 357003 nodes left
+[5698.963844] Read coherency...
+[5698.995667] Identifying unique nodes
+[5699.076986] Done, 185915 unique nodes counted
+[5699.076992] Trimming read tips
+[5699.145749] Renumbering nodes
+[5699.145754] Initial node count 357003
+[5699.146693] Removed 0 null nodes
+[5699.146695] Confronted to 0 multiple hits and 0 null over 0
+[5699.146697] Read coherency over!
+[5700.037979] Starting pebble resolution...
+[5700.582934] Computing read to node mapping array sizes
+[5703.356217] Computing read to node mappings
+[5715.865428] Estimating library insert lengths...
+[5716.630294] Done
+[5716.631244] Computing direct node to node mappings
+[5716.646802] Scaffolding node -350000
+[5716.678294] Scaffolding node -340000
+[5716.715046] Scaffolding node -330000
+[5716.755087] Scaffolding node -320000
+[5716.796674] Scaffolding node -310000
+[5716.840269] Scaffolding node -300000
+[5716.885869] Scaffolding node -290000
+[5716.933864] Scaffolding node -280000
+[5716.984338] Scaffolding node -270000
+[5717.034454] Scaffolding node -260000
+[5717.086388] Scaffolding node -250000
+[5717.138155] Scaffolding node -240000
+[5717.191795] Scaffolding node -230000
+[5717.244726] Scaffolding node -220000
+[5717.300628] Scaffolding node -210000
+[5717.356739] Scaffolding node -200000
+[5717.414263] Scaffolding node -190000
+[5717.472099] Scaffolding node -180000
+[5717.528983] Scaffolding node -170000
+[5717.587315] Scaffolding node -160000
+[5717.644430] Scaffolding node -150000
+[5717.702172] Scaffolding node -140000
+[5717.760072] Scaffolding node -130000
+[5717.819782] Scaffolding node -120000
+[5717.877737] Scaffolding node -110000
+[5717.935148] Scaffolding node -100000
+[5717.992851] Scaffolding node -90000
+[5718.050154] Scaffolding node -80000
+[5718.105386] Scaffolding node -70000
+[5718.160709] Scaffolding node -60000
+[5718.211747] Scaffolding node -50000
+[5718.263071] Scaffolding node -40000
+[5718.311816] Scaffolding node -30000
+[5718.357176] Scaffolding node -20000
+[5718.398746] Scaffolding node -10000
+[5718.431434] Scaffolding node 0
+[5718.462415] Scaffolding node 10000
+[5718.506518] Scaffolding node 20000
+[5718.555099] Scaffolding node 30000
+[5718.607385] Scaffolding node 40000
+[5718.661467] Scaffolding node 50000
+[5718.716694] Scaffolding node 60000
+[5718.775831] Scaffolding node 70000
+[5718.836170] Scaffolding node 80000
+[5718.898965] Scaffolding node 90000
+[5718.961185] Scaffolding node 100000
+[5719.022418] Scaffolding node 110000
+[5719.084737] Scaffolding node 120000
+[5719.149609] Scaffolding node 130000
+[5719.212186] Scaffolding node 140000
+[5719.275028] Scaffolding node 150000
+[5719.337530] Scaffolding node 160000
+[5719.401213] Scaffolding node 170000
+[5719.463639] Scaffolding node 180000
+[5719.526628] Scaffolding node 190000
+[5719.590202] Scaffolding node 200000
+[5719.651463] Scaffolding node 210000
+[5719.713324] Scaffolding node 220000
+[5719.772469] Scaffolding node 230000
+[5719.831272] Scaffolding node 240000
+[5719.890298] Scaffolding node 250000
+[5719.948681] Scaffolding node 260000
+[5720.005704] Scaffolding node 270000
+[5720.063851] Scaffolding node 280000
+[5720.118163] Scaffolding node 290000
+[5720.171548] Scaffolding node 300000
+[5720.223494] Scaffolding node 310000
+[5720.272546] Scaffolding node 320000
+[5720.319449] Scaffolding node 330000
+[5720.364255] Scaffolding node 340000
+[5720.405347] Scaffolding node 350000
+[5720.475233]  === Nodes Scaffolded in 3.843985 s
+[5721.325009] Preparing to correct graph with cutoff 0.200000
+[5724.670227] Cleaning memory
+[5724.670242] Deactivating local correction settings
+[5724.680106] Pebble done.
+[5724.680111] Starting pebble resolution...
+[5725.216758] Computing read to node mapping array sizes
+[5727.973296] Computing read to node mappings
+[5740.481812] Estimating library insert lengths...
+[5741.252236] Done
+[5741.253182] Computing direct node to node mappings
+[5741.276409] Scaffolding node -350000
+[5741.323455] Scaffolding node -340000
+[5741.376183] Scaffolding node -330000
+[5741.430955] Scaffolding node -320000
+[5741.486372] Scaffolding node -310000
+[5741.540862] Scaffolding node -300000
+[5741.596147] Scaffolding node -290000
+[5741.653038] Scaffolding node -280000
+[5741.709933] Scaffolding node -270000
+[5741.764975] Scaffolding node -260000
+[5741.821133] Scaffolding node -250000
+[5741.873757] Scaffolding node -240000
+[5741.927183] Scaffolding node -230000
+[5741.977914] Scaffolding node -220000
+[5742.030508] Scaffolding node -210000
+[5742.082731] Scaffolding node -200000
+[5742.134812] Scaffolding node -190000
+[5742.185757] Scaffolding node -180000
+[5742.234568] Scaffolding node -170000
+[5742.284613] Scaffolding node -160000
+[5742.332037] Scaffolding node -150000
+[5742.379298] Scaffolding node -140000
+[5742.424252] Scaffolding node -130000
+[5742.470733] Scaffolding node -120000
+[5742.513551] Scaffolding node -110000
+[5742.555267] Scaffolding node -100000
+[5742.597790] Scaffolding node -90000
+[5742.640120] Scaffolding node -80000
+[5742.679151] Scaffolding node -70000
+[5742.717433] Scaffolding node -60000
+[5742.750771] Scaffolding node -50000
+[5742.785264] Scaffolding node -40000
+[5742.817411] Scaffolding node -30000
+[5742.846689] Scaffolding node -20000
+[5742.872070] Scaffolding node -10000
+[5742.893423] Scaffolding node 0
+[5742.913041] Scaffolding node 10000
+[5742.940193] Scaffolding node 20000
+[5742.971496] Scaffolding node 30000
+[5743.006725] Scaffolding node 40000
+[5743.044066] Scaffolding node 50000
+[5743.080729] Scaffolding node 60000
+[5743.122023] Scaffolding node 70000
+[5743.164576] Scaffolding node 80000
+[5743.210806] Scaffolding node 90000
+[5743.257043] Scaffolding node 100000
+[5743.302082] Scaffolding node 110000
+[5743.348568] Scaffolding node 120000
+[5743.399025] Scaffolding node 130000
+[5743.447442] Scaffolding node 140000
+[5743.498847] Scaffolding node 150000
+[5743.550373] Scaffolding node 160000
+[5743.604522] Scaffolding node 170000
+[5743.657824] Scaffolding node 180000
+[5743.712936] Scaffolding node 190000
+[5743.768956] Scaffolding node 200000
+[5743.824754] Scaffolding node 210000
+[5743.881481] Scaffolding node 220000
+[5743.937215] Scaffolding node 230000
+[5743.994720] Scaffolding node 240000
+[5744.052684] Scaffolding node 250000
+[5744.112973] Scaffolding node 260000
+[5744.173403] Scaffolding node 270000
+[5744.234714] Scaffolding node 280000
+[5744.295836] Scaffolding node 290000
+[5744.356309] Scaffolding node 300000
+[5744.416075] Scaffolding node 310000
+[5744.476756] Scaffolding node 320000
+[5744.535555] Scaffolding node 330000
+[5744.593222] Scaffolding node 340000
+[5744.645471] Scaffolding node 350000
+[5744.705308]  === Nodes Scaffolded in 3.452122 s
+[5745.209058] Preparing to correct graph with cutoff 0.200000
+[5746.438263] Cleaning memory
+[5746.438284] Deactivating local correction settings
+[5746.448082] Pebble done.
+[5746.448090] Concatenation...
+[5746.856081] Renumbering nodes
+[5746.856088] Initial node count 357003
+[5746.922431] Removed 62019 null nodes
+[5746.930884] Concatenation over!
+[5746.930889] Removing reference contigs with coverage < 2.532353...
+[5747.020264] Concatenation...
+[5747.084159] Renumbering nodes
+[5747.084165] Initial node count 294984
+[5747.085015] Removed 0 null nodes
+[5747.093011] Concatenation over!
+[5747.570015] Writing contigs into ./outputDir/assembly/contigs.fa...
+[5793.033965] Writing into stats file ./outputDir/assembly/stats.txt...
+[5813.518913] Writing into graph file ./outputDir/assembly/LastGraph...
+[5877.874089] Estimated Coverage = 5.064706
+[5877.874100] Estimated Coverage cutoff = 2.532353
+Final graph has 294984 nodes and n50 of 1408, max 73415, total 150215438, using 48831903/59691230 reads

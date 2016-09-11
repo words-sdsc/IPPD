@@ -1,0 +1,52 @@
+[0.000000] Reading FastA file ./data/uniq-1;
+[0.000157] Reading FastA file ./data/uniq-2;
+[65.287317] 37647146 sequences found in total in the paired sequence files
+[65.287319] Done
+[65.287405] Reading read set file ./outputDir/assembly/Sequences;
+[68.735627] 37647146 sequences found
+[89.296589] Done
+[89.296594] 37647146 sequences in total.
+[89.296735] Writing into roadmap file ./outputDir/assembly/Roadmaps...
+[99.832604] Inputting sequences...
+[99.832608] Inputting sequence 0 / 37647146
+[113.589494] Inputting sequence 1000000 / 37647146
+[134.207462] Inputting sequence 2000000 / 37647146
+[158.818732] Inputting sequence 3000000 / 37647146
+[186.071615] Inputting sequence 4000000 / 37647146
+[215.257967] Inputting sequence 5000000 / 37647146
+[245.981484] Inputting sequence 6000000 / 37647146
+[277.915342] Inputting sequence 7000000 / 37647146
+[310.840976] Inputting sequence 8000000 / 37647146
+[344.588377] Inputting sequence 9000000 / 37647146
+[379.090713] Inputting sequence 10000000 / 37647146
+[414.186311] Inputting sequence 11000000 / 37647146
+[449.803826] Inputting sequence 12000000 / 37647146
+[485.900580] Inputting sequence 13000000 / 37647146
+[522.500078] Inputting sequence 14000000 / 37647146
+[559.453699] Inputting sequence 15000000 / 37647146
+[596.248497] Inputting sequence 16000000 / 37647146
+[633.484329] Inputting sequence 17000000 / 37647146
+[671.511107] Inputting sequence 18000000 / 37647146
+[709.836521] Inputting sequence 19000000 / 37647146
+[748.465743] Inputting sequence 20000000 / 37647146
+[787.339459] Inputting sequence 21000000 / 37647146
+[826.571509] Inputting sequence 22000000 / 37647146
+[865.920580] Inputting sequence 23000000 / 37647146
+[905.478976] Inputting sequence 24000000 / 37647146
+[945.294564] Inputting sequence 25000000 / 37647146
+[985.233157] Inputting sequence 26000000 / 37647146
+[1025.430059] Inputting sequence 27000000 / 37647146
+[1065.765228] Inputting sequence 28000000 / 37647146
+[1106.297546] Inputting sequence 29000000 / 37647146
+[1146.986384] Inputting sequence 30000000 / 37647146
+[1187.791114] Inputting sequence 31000000 / 37647146
+[1228.814147] Inputting sequence 32000000 / 37647146
+[1269.964264] Inputting sequence 33000000 / 37647146
+[1311.281247] Inputting sequence 34000000 / 37647146
+[1352.358635] Inputting sequence 35000000 / 37647146
+[1393.286484] Inputting sequence 36000000 / 37647146
+[1434.018123] Inputting sequence 37000000 / 37647146
+[1460.178433]  === Sequences loaded in 1360.345832 s
+[1460.178607] Done inputting sequences
+[1460.178608] Destroying splay table
+[1461.209904] Splay table destroyed

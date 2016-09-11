@@ -1,0 +1,29 @@
+[0.000000] Reading FastA file ./data/uniq-1;
+[0.000096] Reading FastA file ./data/uniq-2;
+[26.977274] 14802068 sequences found in total in the paired sequence files
+[26.977275] Done
+[26.977653] Reading read set file ./outputDir/assembly/Sequences;
+[28.424073] 14802068 sequences found
+[36.634104] Done
+[36.634108] 14802068 sequences in total.
+[36.634257] Writing into roadmap file ./outputDir/assembly/Roadmaps...
+[40.826342] Inputting sequences...
+[40.826346] Inputting sequence 0 / 14802068
+[54.479038] Inputting sequence 1000000 / 14802068
+[74.877857] Inputting sequence 2000000 / 14802068
+[99.240981] Inputting sequence 3000000 / 14802068
+[126.366073] Inputting sequence 4000000 / 14802068
+[155.473397] Inputting sequence 5000000 / 14802068
+[186.029272] Inputting sequence 6000000 / 14802068
+[217.887049] Inputting sequence 7000000 / 14802068
+[250.690008] Inputting sequence 8000000 / 14802068
+[284.302379] Inputting sequence 9000000 / 14802068
+[318.460432] Inputting sequence 10000000 / 14802068
+[353.132568] Inputting sequence 11000000 / 14802068
+[388.405794] Inputting sequence 12000000 / 14802068
+[424.415030] Inputting sequence 13000000 / 14802068
+[461.048202] Inputting sequence 14000000 / 14802068
+[490.618366]  === Sequences loaded in 449.792028 s
+[490.619097] Done inputting sequences
+[490.619099] Destroying splay table
+[491.183685] Splay table destroyed

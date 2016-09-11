@@ -1,0 +1,37 @@
+[0.000000] Reading FastA file ./data/uniq-1;
+[0.000144] Reading FastA file ./data/uniq-2;
+[40.417733] 22465404 sequences found in total in the paired sequence files
+[40.417735] Done
+[40.417822] Reading read set file ./outputDir/assembly/Sequences;
+[42.505342] 22465404 sequences found
+[54.737386] Done
+[54.737392] 22465404 sequences in total.
+[54.737527] Writing into roadmap file ./outputDir/assembly/Roadmaps...
+[61.057844] Inputting sequences...
+[61.057851] Inputting sequence 0 / 22465404
+[74.688269] Inputting sequence 1000000 / 22465404
+[95.151926] Inputting sequence 2000000 / 22465404
+[119.518748] Inputting sequence 3000000 / 22465404
+[146.428546] Inputting sequence 4000000 / 22465404
+[175.253332] Inputting sequence 5000000 / 22465404
+[205.509257] Inputting sequence 6000000 / 22465404
+[237.016962] Inputting sequence 7000000 / 22465404
+[269.551911] Inputting sequence 8000000 / 22465404
+[302.889766] Inputting sequence 9000000 / 22465404
+[336.993640] Inputting sequence 10000000 / 22465404
+[371.709115] Inputting sequence 11000000 / 22465404
+[407.113905] Inputting sequence 12000000 / 22465404
+[443.232680] Inputting sequence 13000000 / 22465404
+[479.825039] Inputting sequence 14000000 / 22465404
+[516.655923] Inputting sequence 15000000 / 22465404
+[554.025000] Inputting sequence 16000000 / 22465404
+[591.745310] Inputting sequence 17000000 / 22465404
+[629.799504] Inputting sequence 18000000 / 22465404
+[668.133237] Inputting sequence 19000000 / 22465404
+[706.726170] Inputting sequence 20000000 / 22465404
+[745.533949] Inputting sequence 21000000 / 22465404
+[784.720876] Inputting sequence 22000000 / 22465404
+[802.930094]  === Sequences loaded in 741.872254 s
+[802.930262] Done inputting sequences
+[802.930264] Destroying splay table
+[803.664205] Splay table destroyed

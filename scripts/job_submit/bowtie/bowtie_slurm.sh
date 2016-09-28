@@ -28,12 +28,12 @@
 "sync"+"\n"+
 
 "numactl --membind=0 --physcpubind=0-" + ppn + " "  +
-"/usr/bin/time -v " + RemoteToolDir + "/bowtie -f -k 1 -v 2 -p 16 " + RemoteRefDir + "/human/human " + TrialInputDir+"/"+Input1 + " " + TrialOutputDir + "/human-hit-1" 
+"/usr/bin/time -v " + RemoteToolDir + "/bowtie -f -k 1 -v 2 -p 16 " + RemoteRefDir + "/human/human " + Input1 + " " + TrialOutputDir + "/human-hit-1" 
 + " 2>> " + TrialErrDir + "/" + JobErrorFile + "_" + "$SLURM_JOBID " 
 + " 1>> " + TrialErrDir + "/" + JobOutputFile + "_" + "$SLURM_JOBID " + "\n"+
 
 "numactl --membind=0 --physcpubind=0-" + ppn + " " +
-"/usr/bin/time -v "+RemoteToolDir+"/bowtie -f -k 1 -v 2 -p 16 " + RemoteRefDir + "/human/human " + TrialInputDir+"/"+Input2 + " " + TrialOutputDir + "/human-hit-2"
+"/usr/bin/time -v "+RemoteToolDir+"/bowtie -f -k 1 -v 2 -p 16 " + RemoteRefDir + "/human/human " + Input2 + " " + TrialOutputDir + "/human-hit-2"
 + " 2>> " + TrialErrDir + "/" + JobErrorFile + "_" + "$SLURM_JOBID " 
 + " 1>> " + TrialErrDir + "/" + JobOutputFile + "_" + "$SLURM_JOBID " + "\n"+
 

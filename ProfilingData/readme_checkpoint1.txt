@@ -1,3 +1,5 @@
+How to extract features from profiled files (dup example):
+--------------------------------------------
 1. copy the dup folder to ~/ProfilingData/dup (worrking directory)
 2. remove *Output* files from the dup folder
 3. run 'python extract.py dup/' - this will generate 'testing.csv'
@@ -12,4 +14,6 @@ checkpoint 1 (with numactl) :
 - * workflow name: comet_LS002_thirdOnly_V3.xml
 - * data folder: ProfilingData/22July2016
 
+17-Jan-2017:
+------------
 

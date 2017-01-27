@@ -16,11 +16,18 @@ sample_list = ["LS002"]
 
 mem_list = ["64G"]  # Fixed for now... taken care of in workflow by numactl --membind
 
+'''
 seqlen_list = [
 "5M", "10M", "15M", "20M", 
 "25M", "30M", "35M", "40M", 
 "60M", "80M", "100M", "120M", 
 "140M", "160M"]
+'''
+seqlen_list = [
+"45M", "50M", "55M", 
+"65M", "70M", "75M",  
+"85M", "90M", "95M"
+]
 
 ppn_list = [2, 5, 8, 11]    # Note: numactl 3, 6, 9, 12 cores respectively
 
@@ -169,7 +176,7 @@ for i in range (0, num_combs):
             '-' + wf_module_name + 'realRemoteDir', realRemoteDir,
             WorkflowLocation ])
     print ("Submitted Combination # %d out of %d: (%s)" % (i+1, num_combs, vars_str))
-    subprocess.check_call(['sleep','15'])       # do we need to delay?...
+    subprocess.check_call(['sleep','5'])       # do we need to delay?...
 
 print ("---------------")
 print ("All jobs have been submitted to Comet.")

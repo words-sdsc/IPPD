@@ -21,7 +21,7 @@
 
 "cp " + realRemoteDir + "/execFiles/bin/* " + RemoteToolDir + "\n" +
 "cp " + realRemoteDir + "/scriptFiles/* " + RemoteScriptDir + "\n" +
-"cp " + realRemoteDir + "/dataFiles.dup/OutputDir/seqlen" + seqlen + "/* " + TrialInputDir + "\n" + 
+"cp " + realRemoteDir + "/" + SampleName + "/dataFiles.dup/OutputDir/seqlen" + seqlen + "/* " + TrialInputDir + "\n"+ 
 "cp " + realRemoteDir + "/largeFiles/file.15G " + RemoteProjectDir + "\n" +
 
 "sync"+"\n"+

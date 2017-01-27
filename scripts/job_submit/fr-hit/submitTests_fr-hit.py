@@ -6,15 +6,23 @@ from itertools import product   # for easy dynamic nested for-loops
 
 
 ## Define lists of values for each iterable parameters
-module_list = ["fr-hit"]
+module_list = ["frhit"]
 
 sample_list = ["LS002"]
 
 mem_list = ["64G"]  # Fixed for now... taken care of in workflow by numactl --membind
 
 seqlen_list = ["5M", "10M", "15M", "20M", "25M", "30M", "35M", "40M"]
+#seqlen_list = ["20M"]
+
 
 ppn_list = [2, 5, 8, 11]    # Note: numactl 3, 6, 9, 12 cores respectively
+#ppn_list = [11]
+
+numOfSplits = 1
+#numOfSplits = 1
+split_list = range(0, numOfSplits)
+
 
 NumOfIterations = 1     # number of trials per configuration here
 trial_list = list(range(1, NumOfIterations+1))
@@ -27,7 +35,8 @@ params = {
     'ppn' : ppn_list,
     'mem' : mem_list,
     'seqlen' : seqlen_list,
-    'trial' : trial_list
+    'trial' : trial_list,
+    'split' : split_list
 }
 
 
@@ -39,7 +48,7 @@ var_combs = list(product(*params.values())) # create all combinations
 num_combs = len(var_combs)          # count number of combinations
 
 # Sequence of parameter names to be used to determine file naming 
-paramKeys = ["module", "sample", "seqlen", "ppn", "mem", "trial"]
+paramKeys = ["module", "sample", "seqlen", "ppn", "mem", "trial", "split"]
 
 
 '''
@@ -58,6 +67,7 @@ for i in range (0, num_combs):
     mem = str(var_combs[i][keys.index("mem")])
     seqlen = str(var_combs[i][keys.index("seqlen")])
     trial = str(var_combs[i][keys.index("trial")])
+    split = str(var_combs[i][keys.index("split")])
 
     # Generate identifier string based on combination 
     # Example: 'ppn_16_mem_64G_seqlen_64G_.....
@@ -77,10 +87,11 @@ for i in range (0, num_combs):
     Mail = "a3rao@ucsd.edu"
     TargetHost = "a3rao@comet.sdsc.edu"
 
-    # Local File Locations
-    IdentityFile = '/Users/arrao/.ssh/comet_rsa'
-    KeplerLocation = '/Users/arrao/arvind/kepler.modules/kepler.sh'
-    WorkflowLocation = '/Users/arrao/arvind/ippd/sampleWorkflow/comet_frhit.xml'
+
+    # Local File Locations - fill out appropriately
+    IdentityFile = '/Users/arvind/.ssh/id_rsa'
+    KeplerLocation = '/Users/arvind/Projects/kepler.modules/kepler.sh'
+    WorkflowLocation = '/Users/arvind/Projects/ippd/workflows/comet_xml/comet_frhit.xml'
 
 
     # 'real remote' - location of base project on comet, 'on login node'
@@ -103,8 +114,10 @@ for i in range (0, num_combs):
     OutputDir = RemoteProjectDir    + "/outputDir"
     InputDir = RemoteProjectDir     + "/data"
 
-    # Output will be copied back here
-    realRemoteOutputDir = realRemoteDir + "/" + SampleName + "/qsubErrOut/" + JobFolderName 
+    # Outputs will be copied back here
+    realRemoteSampleDir = realRemoteDir + "/" + SampleName + "/dataFiles." + Jobname
+    realRemoteErrorDir =  realRemoteSampleDir +"/qsubErrOut" 
+    realRemoteOutputDir = realRemoteSampleDir + "/OutputDir/seqlen" + seqlen 
 
     # embedding property details into the filename
     TrialErrorFile = NameToAppend + JobErrorFile
@@ -117,8 +130,8 @@ for i in range (0, num_combs):
     TrialErrDir = ErrTopDir
 
     # Used for Fr-Hit... 
-    Input1 = TrialInputDir + '/split-1'
-    Input2 = TrialInputDir + '/split-2' 
+    Input1 = TrialInputDir + '/read-split/split-1'
+    Input2 = TrialInputDir + '/read-split/split-2' 
     
     # print statements, so the user can see submission progress
     vars_str = ", ".join(str(x) for x in var_combs[i])
@@ -127,8 +140,6 @@ for i in range (0, num_combs):
     # submit task to comet via Kepler
     wf_module_name="NGS_preprocessing.FR-HIT.CometExec."
     p = subprocess.check_call([
-                            #['./kepler.sh','-runwf', '-nogui', '-nocache', 
-                            #'/Users/arvind/Projects/kepler.modules/kepler.sh','-runwf', '-nogui', '-nocache', 
                             KeplerLocation,'-runwf', '-nogui', '-nocache', 
                             '-' + wf_module_name + 'Account', Account,
                             '-' + wf_module_name + 'IdentityFile', IdentityFile,
@@ -155,15 +166,13 @@ for i in range (0, num_combs):
                             '-' + wf_module_name + 'mem', mem,
                             '-' + wf_module_name + 'ppn', ppn,
                             '-' + wf_module_name + 'seqlen', seqlen,
+                            '-' + wf_module_name + 'realRemoteErrorDir', realRemoteErrorDir,  
                             '-' + wf_module_name + 'realRemoteOutputDir', realRemoteOutputDir,  
                             '-' + wf_module_name + 'realRemoteDir', realRemoteDir,
-                            WorkflowLocation
-                            #'/Users/arvind/Projects/ippd/sampleWorkflow/comet_frhit.xml'])
-                   			])              
-                            ### call Kepler, specify workflow name here.
-    print ("Submitted Combination # %d out of %d: (%s)" % (i+1, num_combs, c,  vars_str))
-    subprocess.check_call(['sleep','15'])       # do we need to delay?...
+                            '-' + wf_module_name + 'SplitNum', split,
+                            WorkflowLocation ])              
+    print ("Submitted Combination # %d out of %d: (%s)" % (i+1, num_combs, vars_str))
+    subprocess.check_call(['sleep','1'])       # do we need to delay?...
 
 print ("---------------")
 print ("All jobs have been submitted to Comet.")
-

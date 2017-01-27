@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ #!/usr/bin/env python
 '''
 @author a3rao
 submitTests.py for MTGA Velvet
@@ -16,14 +16,33 @@ sample_list = ["LS002"]
 
 mem_list = ["64G"]  # Fixed for now... taken care of in workflow by numactl --membind
 
+'''
 seqlen_list = [
 "5M", "10M", "15M", "20M", 
 "25M", "30M", "35M", "40M", 
 "60M", "80M"]
+'''
+'''
+seqlen_list = [
+"5M", "10M", "15M", "20M", 
+"25M", "30M", "35M", "40M", 
+"45M", "50M", "55M", "60M",
+"65M", "70M", "75M", "80M",
+"85M", "90M", "95M"]
+'''
+
+seqlen_list = [
+"5M", "10M", "15M", "20M", 
+"25M", "30M", "35M", "40M"]
+#seqlen_list = ["40M"]
+
 
 ppn_list = [2, 5, 8, 11]    # Note: numactl 3, 6, 9, 12 cores respectively
+#ppn_list = [11]    # Note: numactl 3, 6, 9, 12 cores respectively
 
-NumOfIterations = 2     # number of trials per configuration here
+NumOfIterations = 3     # number of trials per configuration here
+#NumOfIterations = 1     # number of trials per configuration here
+
 trial_list = list(range(1, NumOfIterations+1))
 
 
@@ -108,9 +127,9 @@ for i in range (0, num_combs):
     InputDir = RemoteProjectDir     + "/data"
 
     # Outputs will be copied back here
-    realRemoteErrorDir = realRemoteDir + "/" + SampleName + "/qsubErrOut/" + JobFolderName 
-    realRemoteOutputDir = realRemoteDir + "/" + SampleName + "/" + Jobname + "/seqlen" + seqlen 
-
+    realRemoteSampleDir = realRemoteDir + "/" + SampleName + "/dataFiles." + Jobname
+    realRemoteErrorDir =  realRemoteSampleDir +"/qsubErrOut" 
+    realRemoteOutputDir = realRemoteSampleDir + "/OutputDir/seqlen" + seqlen 
 
     # Embedding property details into the filename
     TrialErrorFile = NameToAppend + JobErrorFile
@@ -122,7 +141,7 @@ for i in range (0, num_combs):
     TrialOutputDir = OutputDir
     TrialErrDir = ErrTopDir
 
-    # Input files for QC
+    # Input files for VELVET
     Input1 = TrialInputDir + '/uniq-1'
     Input2 = TrialInputDir + '/uniq-2' 
     
@@ -164,7 +183,7 @@ for i in range (0, num_combs):
             '-' + wf_module_name + 'realRemoteDir', realRemoteDir,
             WorkflowLocation ])
     print ("Submitted Combination # %d out of %d: (%s)" % (i+1, num_combs, vars_str))
-    subprocess.check_call(['sleep','15'])       # do we need to delay?...
+    subprocess.check_call(['sleep','5'])       # do we need to delay?...
 
 print ("---------------")
 print ("All jobs have been submitted to Comet.")

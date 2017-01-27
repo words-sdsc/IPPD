@@ -31,5 +31,5 @@
 + " 2>> " + TrialErrDir + "/" + JobErrorFile + "_script_NGS-qa-filter-v2.pl_" + "$SLURM_JOBID " 
 + " 1>> " + TrialErrDir + "/" + JobOutputFile + "_script_NGS-qa-filter-v2.pl_" + "$SLURM_JOBID " + "\n"+
 
-"cp -r " + TrialErrDir + " " + realRemoteErrorDir + "/." + "\n" +
-"cp -r " + TrialOutputDir + " " + realRemoteOutputDir + "/." + "\n"
+"cp -r " + TrialErrDir + "/* " + realRemoteErrorDir + "/." + "\n" +
+"cp -r " + TrialOutputDir + "/* " + realRemoteOutputDir + "/." + "\n"

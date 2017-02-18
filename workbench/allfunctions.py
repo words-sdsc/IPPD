@@ -11,27 +11,33 @@ def rmse_scorer(model, X, y):
     return k
 
 
-# In[2]:
-
-'''
-1  def LassoCVModel(filename):
-2  def OMPCVModel(filename):
-3  def GradientBoostingCVModel(filename):
-4  def RandomForestCVModel(filename):
-5  def RidgeCVModel(filename):
-6  def ElasticNetCVModel(filename):
-7  def SVRPolyCVModel(filename):
-8  def SVRSigmoidCVModel(filename):
-9  def SVRLinearCVModel(filename):
-10 def SVRRbfCVModel(filename):
-'''
-
+# 
+# 1  def LassoCVModel(filename)
+# 
+# 2  def OMPCVModel(filename)
+# 
+# 3  def GradientBoostingCVModel(filename)
+# 
+# 4  def RandomForestCVModel(filename)
+# 
+# 5  def RidgeCVModel(filename)
+# 
+# 6  def ElasticNetCVModel(filename)
+# 
+# 7  def SVRPolyCVModel(filename)
+# 
+# 8  def SVRSigmoidCVModel(filename)
+# 
+# 9  def SVRLinearCVModel(filename)
+# 
+# 10 def SVRRbfCVModel(filename)
+# 
 
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[3]:
+# In[10]:
 
 #1
 def LassoCVModel(filename):
@@ -58,7 +64,9 @@ def LassoCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( {'alpha' : np.logspace(-5, 5, 20) } )
+    tuned_parameters.append( {'alpha' : np.logspace(-5, 5, 20),
+                              'precompute' : [True, False]
+                             } )
     
     ##############################################################
     
@@ -95,10 +103,11 @@ def LassoCVModel(filename):
                        'test_rmse_4_reporting': reporting_testscore, 
                        'test_mean_y_4_comparing': y_test.mean(),
                        'model': model
-                      }}
+                      }
+           }
 
 
-# In[1]:
+# In[13]:
 
 #2
 def OMPCVModel(filename):
@@ -126,7 +135,8 @@ def OMPCVModel(filename):
     #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append({'tol' : [1e-9, 1e-7]
+    tuned_parameters.append({'tol' : [1e-9, 1e-7],
+                             'n_nonzero_coefs' : [28, 57]
                             
                             })
     
@@ -159,6 +169,7 @@ def OMPCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
                        'test_rmse_4_reporting': reporting_testscore, 
                        'test_mean_y_4_comparing': y_test.mean(),
@@ -166,7 +177,7 @@ def OMPCVModel(filename):
                       }}
 
 
-# In[5]:
+# In[12]:
 
 #3
 def GradientBoostingCVModel(filename):
@@ -192,8 +203,9 @@ def GradientBoostingCVModel(filename):
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     ##############################################################
-    tuned_parameters = [     {  "loss" : ['ls'],
-                                "learning_rate": [0.1, 0.01, 0.001]
+    tuned_parameters = [     {  "loss" : ['ls', 'huber', 'quantile', 'lad'],
+                                "learning_rate": [0.01, 0.001],
+                                "max_depth": [3, 9]
                              }
                        ]
 

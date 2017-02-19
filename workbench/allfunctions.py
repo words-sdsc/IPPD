@@ -38,7 +38,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[18]:
+# In[50]:
 
 #1
 def LassoCVModel(filename):
@@ -65,7 +65,7 @@ def LassoCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( {'alpha' : np.logspace(-3, 5, 20),
+    tuned_parameters.append( {'alpha' : np.logspace(-4, 10, 30),
                               'precompute' : [True, False]
                              } )
     
@@ -74,11 +74,9 @@ def LassoCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    ##############################################################
-    ########################## Model #############################
-    ##############################################################
+    # Lasso
     grdsurch = GridSearchCV(Lasso(alpha=1.0, fit_intercept=True, normalize=False, precompute=False, 
-                                  copy_X=True, max_iter=10000, tol=0.0001, warm_start=False, 
+                                  copy_X=True, max_iter=1e7, tol=1e-6, warm_start=False, 
                                   positive=False, random_state=None, selection='random'), 
                        tuned_parameters, 
                        cv=3, 
@@ -108,7 +106,7 @@ def LassoCVModel(filename):
            }
 
 
-# In[19]:
+# In[52]:
 
 #2
 def OMPCVModel(filename):
@@ -130,15 +128,14 @@ def OMPCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append({'tol' : [1e-15, 1e-11],
-                             'n_nonzero_coefs' : [7, 14, 28, 57]
+    tuned_parameters.append({'tol' : [1e-20, 1e-15, 1e-11],
+                             'n_nonzero_coefs' : [3, 7, 14, 28]
                             
                             })
     
@@ -146,9 +143,10 @@ def OMPCVModel(filename):
     
     print("# Tuning hyper-parameters ")
     print()
-
+    
+    # OMP
     grdsurch = GridSearchCV(OrthogonalMatchingPursuit(n_nonzero_coefs=None, 
-                                                      tol=1e-7, fit_intercept=True, 
+                                                      tol=None, fit_intercept=True, 
                                                       normalize=True, precompute='auto'), 
                        tuned_parameters, 
                        cv=3, 
@@ -179,7 +177,7 @@ def OMPCVModel(filename):
                       }}
 
 
-# In[20]:
+# In[49]:
 
 #3
 def GradientBoostingCVModel(filename):
@@ -205,9 +203,9 @@ def GradientBoostingCVModel(filename):
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     ##############################################################
-    tuned_parameters = [     {  "loss" : ['ls', 'huber', 'quantile', 'lad'],
-                                "learning_rate": [0.01, 0.001],
-                                "max_depth": [3, 9, None]
+    tuned_parameters = [     {  "n_estimators" :[6000],
+                               "loss" : ['ls'],
+                                "learning_rate": [0.005, 0.01, 0.001]
                              }
                        ]
 
@@ -217,6 +215,7 @@ def GradientBoostingCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
+    #Boosting
     grdsurch = GridSearchCV(GradientBoostingRegressor(loss='ls', learning_rate=0.1, n_estimators=6000, subsample=1.0, 
                                                       criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, 
                                                       min_weight_fraction_leaf=0.0, max_depth=None, 
@@ -250,7 +249,7 @@ def GradientBoostingCVModel(filename):
                       }}
 
 
-# In[6]:
+# In[37]:
 
 #4
 def RandomForestCVModel(filename):
@@ -278,6 +277,7 @@ def RandomForestCVModel(filename):
     ##############################################################
     tuned_parameters = []
     tuned_parameters.append( { 
+                              "n_estimators" :[2000, 4000, 6000],
                               "min_samples_split": [2],
                               "min_samples_leaf": [1,2],
                               "min_weight_fraction_leaf": [0.0],

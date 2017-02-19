@@ -5,6 +5,7 @@
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
+
 def rmse_scorer(model, X, y): 
     y_predict = model.predict(X)
     k = np.sqrt(mean_squared_error(y, y_predict))
@@ -37,7 +38,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[10]:
+# In[18]:
 
 #1
 def LassoCVModel(filename):
@@ -64,7 +65,7 @@ def LassoCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( {'alpha' : np.logspace(-5, 5, 20),
+    tuned_parameters.append( {'alpha' : np.logspace(-3, 5, 20),
                               'precompute' : [True, False]
                              } )
     
@@ -107,7 +108,7 @@ def LassoCVModel(filename):
            }
 
 
-# In[13]:
+# In[19]:
 
 #2
 def OMPCVModel(filename):
@@ -130,13 +131,14 @@ def OMPCVModel(filename):
     
     #Normalize
     X_train = preprocessing.normalize(X_train, norm='l1')
+    
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append({'tol' : [1e-9, 1e-7],
-                             'n_nonzero_coefs' : [28, 57]
+    tuned_parameters.append({'tol' : [1e-15, 1e-11],
+                             'n_nonzero_coefs' : [7, 14, 28, 57]
                             
                             })
     
@@ -147,7 +149,7 @@ def OMPCVModel(filename):
 
     grdsurch = GridSearchCV(OrthogonalMatchingPursuit(n_nonzero_coefs=None, 
                                                       tol=1e-7, fit_intercept=True, 
-                                                      normalize=False, precompute='auto'), 
+                                                      normalize=True, precompute='auto'), 
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 

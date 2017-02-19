@@ -179,7 +179,7 @@ def OMPCVModel(filename):
                       }}
 
 
-# In[12]:
+# In[20]:
 
 #3
 def GradientBoostingCVModel(filename):
@@ -207,7 +207,7 @@ def GradientBoostingCVModel(filename):
     ##############################################################
     tuned_parameters = [     {  "loss" : ['ls', 'huber', 'quantile', 'lad'],
                                 "learning_rate": [0.01, 0.001],
-                                "max_depth": [3, 9]
+                                "max_depth": [3, 9, None]
                              }
                        ]
 

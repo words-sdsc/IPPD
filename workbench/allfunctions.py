@@ -107,7 +107,7 @@ def RandomForestCVModel(filename):
                       }}
 
 
-# In[7]:
+# In[64]:
 
 #5
 def RidgeCVModel(filename):
@@ -134,14 +134,14 @@ def RidgeCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( {'alpha' : np.logspace(-5, 5, 20) })
+    tuned_parameters.append( {'alpha' : np.logspace(-15, -10, 100) })
     ##############################################################
     
     print("# Tuning hyper-parameters ")
     print()
 
     grdsurch = GridSearchCV(Ridge(alpha=1.0, fit_intercept=True, 
-                             normalize=False, copy_X=True, max_iter=None, tol=0.001, 
+                             normalize=True, copy_X=True, max_iter=None, tol=1e-20, 
                              solver='auto', random_state=None), 
                        tuned_parameters, 
                        cv=3, 

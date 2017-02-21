@@ -107,7 +107,7 @@ def RandomForestCVModel(filename):
                       }}
 
 
-# In[64]:
+# In[72]:
 
 #5
 def RidgeCVModel(filename):
@@ -140,8 +140,9 @@ def RidgeCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
+    # Ridge Regression (L2)
     grdsurch = GridSearchCV(Ridge(alpha=1.0, fit_intercept=True, 
-                             normalize=True, copy_X=True, max_iter=None, tol=1e-20, 
+                             normalize=False, copy_X=True, max_iter=None, tol=1e-20, 
                              solver='auto', random_state=None), 
                        tuned_parameters, 
                        cv=3, 
@@ -170,7 +171,7 @@ def RidgeCVModel(filename):
                       }}
 
 
-# In[8]:
+# In[82]:
 
 #6
 def ElasticNetCVModel(filename):
@@ -197,16 +198,20 @@ def ElasticNetCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( {'alpha'   : np.logspace(-2, 5, 40), 
-                              'l1_ratio': [.1, .7, .9, .92, .95, .99, 1]  }) # 
+    tuned_parameters.append( { 'alpha'   : np.logspace(-5, 1, 10), 
+                               'l1_ratio': [.1, .5, .99]  
+                             }
+                           ) 
     
     ##############################################################
     
     print("# Tuning hyper-parameters ")
     print()
 
+    # Elastic Net (L1 + L2)
+    # Linear regression with combined L1 and L2 priors as regularizer
     grdsurch = GridSearchCV(ElasticNet(alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, 
-                                       precompute=False, max_iter=1e6, copy_X=True, tol=1e-7, 
+                                       precompute=False, max_iter=1e7, copy_X=True, tol=1e-20, 
                                        warm_start=False, positive=False, 
                                        random_state=None, selection='cyclic'), 
                        tuned_parameters, 
@@ -574,7 +579,7 @@ def LassoCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    # Lasso
+    # Lasso (L1)
     grdsurch = GridSearchCV(Lasso(alpha=1.0, fit_intercept=True, normalize=False, precompute=False, 
                                   copy_X=True, max_iter=1e7, tol=1e-6, warm_start=False, 
                                   positive=False, random_state=None, selection='random'), 

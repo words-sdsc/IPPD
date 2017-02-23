@@ -171,7 +171,7 @@ def RidgeCVModel(filename):
                       }}
 
 
-# In[82]:
+# In[91]:
 
 #6
 def ElasticNetCVModel(filename):
@@ -181,6 +181,7 @@ def ElasticNetCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from sklearn.model_selection import RandomizedSearchCV
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -198,8 +199,8 @@ def ElasticNetCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( { 'alpha'   : np.logspace(-5, 1, 10), 
-                               'l1_ratio': [.1, .5, .99]  
+    tuned_parameters.append( { 'alpha'   : np.logspace(-15, -10, 20), 
+                               'l1_ratio': [.01]  
                              }
                            ) 
     
@@ -218,6 +219,22 @@ def ElasticNetCVModel(filename):
                        cv=3, 
                        n_jobs=-1, 
                        scoring=rmse_scorer)
+    ''' 
+    
+    grdsurch = RandomizedSearchCV(estimator=ElasticNet(alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, 
+                                       precompute=False, max_iter=1e9, copy_X=True, tol=1e-20, 
+                                       warm_start=False, positive=False, 
+                                       random_state=None, selection='cyclic'), 
+                                  param_distributions=tuned_parameters[0], 
+                                  n_iter=10, scoring=rmse_scorer, 
+                                  fit_params=None, n_jobs=-1, 
+                                  iid=True, refit=True, cv=3, 
+                                  verbose=0, pre_dispatch='2*n_jobs', 
+                                  random_state=None, 
+                                  error_score='raise', 
+                                  return_train_score=True)
+    ''' 
+    
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)

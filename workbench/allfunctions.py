@@ -258,7 +258,7 @@ def ElasticNetCVModel(filename):
                       }}
 
 
-# In[9]:
+# In[98]:
 
 #7
 def SVRPolyCVModel(filename):
@@ -283,15 +283,14 @@ def SVRPolyCVModel(filename):
     X_train = preprocessing.normalize(X_train, norm='l1')
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
+    # ‘poly’ 
     ##############################################################
     tuned_parameters = []
     
-    tuned_parameters.append({'kernel' : ['poly'], 
-                             'gamma'  : np.logspace(-15, -5, 4),
-                             'C'      : np.logspace(-15, -5, 4),
-                             'epsilon': np.logspace(-15, -5, 4),
-                             'degree' : [3,6,12,24,36]
+    tuned_parameters.append({
+                             'gamma'  : np.logspace(-15, 3, 5),
+                             'C'      : np.logspace(-5, 15, 5),
+                             'degree' : [3,6,12]
                             })
     
     ##############################################################
@@ -299,7 +298,7 @@ def SVRPolyCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
+    grdsurch = GridSearchCV(SVR(kernel='poly', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
                                 epsilon=0.1, shrinking=False, cache_size=1024, 
                                 verbose=False, max_iter=-1), 
@@ -330,7 +329,7 @@ def SVRPolyCVModel(filename):
                       }}
 
 
-# In[10]:
+# In[99]:
 
 #8
 def SVRSigmoidCVModel(filename):
@@ -360,10 +359,9 @@ def SVRSigmoidCVModel(filename):
     ##############################################################
     tuned_parameters = []
     
-    tuned_parameters.append({'kernel' : ['sigmoid'], 
-                             'gamma'  : np.logspace(-5, 5, 5),
-                             'C'      : np.logspace(-5, 5, 5),
-                             'epsilon': np.logspace(-5, 5, 5) 
+    tuned_parameters.append({
+                             'gamma'  : np.logspace(-15, 3, 5),
+                             'C'      : np.logspace(-5, 15, 5)
                             })
     
     
@@ -372,7 +370,7 @@ def SVRSigmoidCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
+    grdsurch = GridSearchCV(SVR(kernel='sigmoid', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
                                 epsilon=0.1, shrinking=False, cache_size=1024, 
                                 verbose=False, max_iter=-1), 
@@ -403,7 +401,7 @@ def SVRSigmoidCVModel(filename):
                       }}
 
 
-# In[11]:
+# In[102]:
 
 #9
 
@@ -434,10 +432,9 @@ def SVRLinearCVModel(filename):
     tuned_parameters = []
     
     
-    tuned_parameters.append({'kernel' : ['linear'], 
-                             'gamma'  : np.logspace(-5, 5, 5),
-                             'C'      : np.logspace(-5, 5, 5),
-                             'epsilon': np.logspace(-5, 5, 5) 
+    tuned_parameters.append({
+                             # 'gamma'  : np.logspace(-15, 3, 5),
+                             'C'      : np.logspace(-5, 15, 5)
                             })
 
     
@@ -446,7 +443,7 @@ def SVRLinearCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
+    grdsurch = GridSearchCV(SVR(kernel='linear', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
                                 epsilon=0.1, shrinking=False, cache_size=1024, 
                                 verbose=False, max_iter=-1), 
@@ -477,7 +474,7 @@ def SVRLinearCVModel(filename):
                       }}
 
 
-# In[12]:
+# In[101]:
 
 #10
 
@@ -508,11 +505,10 @@ def SVRRbfCVModel(filename):
     ##############################################################
     tuned_parameters = []
 
-    tuned_parameters.append({'kernel' : ['rbf'], 
-                             'gamma'  : np.logspace(-5, 5, 5),
-                             'C'      : np.logspace(-5, 5, 5),
-                             'epsilon': np.logspace(-5, 5, 5) 
-                            })
+    tuned_parameters.append({ 
+                             'gamma'  : np.logspace(-15, 3, 5),
+                             'C'      : np.logspace(-5, 15, 5)
+                             })
     
     ##############################################################
     

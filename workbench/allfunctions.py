@@ -107,7 +107,7 @@ def RandomForestCVModel(filename):
                       }}
 
 
-# In[72]:
+# In[129]:
 
 #5
 def RidgeCVModel(filename):
@@ -129,8 +129,13 @@ def RidgeCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
+    
+    # Scale data
+    standard_scaler = preprocessing.StandardScaler()
+    X_train = standard_scaler.fit_transform(X_train)
+    X_test  = standard_scaler.transform(X_test)
     
     ##############################################################
     tuned_parameters = []
@@ -194,8 +199,13 @@ def ElasticNetCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
+    
+    #Scale
+    standard_scaler = preprocessing.StandardScaler()
+    X_train = standard_scaler.fit_transform(X_train)
+    X_test  = standard_scaler.transform(X_test)
     
     ##############################################################
     tuned_parameters = []
@@ -258,7 +268,7 @@ def ElasticNetCVModel(filename):
                       }}
 
 
-# In[98]:
+# In[121]:
 
 #7
 def SVRPolyCVModel(filename):
@@ -273,35 +283,41 @@ def SVRPolyCVModel(filename):
         data = pickle.load(handle)
 
     #extract X_train, y_train, X_test, t_test
-    X_train = data['X_train']
+    X_trai  = data['X_train']
     y_train = data['y_train']
-    X_test = data['X_test']
-    y_test = data['y_test']
+    X_tes   = data['X_test']
+    y_test  = data['y_test']
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    # ‘poly’ 
+    #Standard Scaling for SVR
+    # Scale data
+    standard_scaler = preprocessing.StandardScaler()
+    X_train = standard_scaler.fit_transform(X_trai)
+    X_test  = standard_scaler.transform(X_tes)
+    
+    # -- a -- ‘poly’ 
     ##############################################################
     tuned_parameters = []
     
     tuned_parameters.append({
-                             'gamma'  : np.logspace(-15, 3, 5),
-                             'C'      : np.logspace(-5, 15, 5),
-                             'degree' : [3,6,12]
+                             'gamma'  : np.logspace(-15, 3, 2),
+                             'C'      : np.logspace(-5, 15, 2),
+                             'degree' : [6]
                             })
     
     ##############################################################
     
-    print("# Tuning hyper-parameters ")
+    print("# Tuning hyper-parameters... ")
     print()
 
     grdsurch = GridSearchCV(SVR(kernel='poly', degree=3, 
-                                gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=1024, 
-                                verbose=False, max_iter=-1), 
+                                gamma='auto', coef0=0.0, tol=1e-2, C=1.0, 
+                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
+                                verbose=False, max_iter=1e9), 
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
@@ -329,7 +345,7 @@ def SVRPolyCVModel(filename):
                       }}
 
 
-# In[99]:
+# In[122]:
 
 #8
 def SVRSigmoidCVModel(filename):
@@ -355,15 +371,15 @@ def SVRSigmoidCVModel(filename):
     X_train = preprocessing.normalize(X_train, norm='l1')
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
+    # -- b -- ‘sigmoid’
     ##############################################################
     tuned_parameters = []
     
     tuned_parameters.append({
-                             'gamma'  : np.logspace(-15, 3, 5),
-                             'C'      : np.logspace(-5, 15, 5)
-                            })
-    
+                             'gamma'  : np.logspace(-15, 3, 1),
+                             'C'      : np.logspace(-5, 15, 1)
+                            }
+                            )    
     
     ##############################################################
     
@@ -372,7 +388,7 @@ def SVRSigmoidCVModel(filename):
 
     grdsurch = GridSearchCV(SVR(kernel='sigmoid', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=1024, 
+                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -401,7 +417,7 @@ def SVRSigmoidCVModel(filename):
                       }}
 
 
-# In[102]:
+# In[125]:
 
 #9
 
@@ -427,7 +443,7 @@ def SVRLinearCVModel(filename):
     X_train = preprocessing.normalize(X_train, norm='l1')
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
+    # -- c -- ‘linear’ 
     ##############################################################
     tuned_parameters = []
     
@@ -445,7 +461,7 @@ def SVRLinearCVModel(filename):
 
     grdsurch = GridSearchCV(SVR(kernel='linear', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=1024, 
+                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -474,10 +490,9 @@ def SVRLinearCVModel(filename):
                       }}
 
 
-# In[101]:
+# In[124]:
 
 #10
-
 
 def SVRRbfCVModel(filename):
     #open file and get the dictionary
@@ -501,7 +516,7 @@ def SVRRbfCVModel(filename):
     X_train = preprocessing.normalize(X_train, norm='l1')
     X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    #‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’, ‘precomputed’ 
+    # -- d -- ‘rbf’
     ##############################################################
     tuned_parameters = []
 
@@ -517,7 +532,7 @@ def SVRRbfCVModel(filename):
 
     grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=1024, 
+                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -556,7 +571,7 @@ def SVRRbfCVModel(filename):
 
 
 
-# In[50]:
+# In[127]:
 
 #1 OK
 def LassoCVModel(filename):
@@ -571,15 +586,20 @@ def LassoCVModel(filename):
         data = pickle.load(handle)
 
     #extract X_train, y_train, X_test, t_test
-    X_train = data['X_train']
+    X_train  = data['X_train']
     y_train = data['y_train']
-    X_test = data['X_test']
-    y_test = data['y_test']
+    X_test   = data['X_test']
+    y_test  = data['y_test']
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
     X_train = preprocessing.normalize(X_train, norm='l1')
     X_test  = preprocessing.normalize(X_test,  norm='l1')
+    
+    # Scale data
+    #standard_scaler = preprocessing.StandardScaler()
+    #X_train = standard_scaler.fit_transform(X_train)
+    #X_test  = standard_scaler.transform(X_test)
     
     ##############################################################
     tuned_parameters = []

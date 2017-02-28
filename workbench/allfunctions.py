@@ -176,7 +176,7 @@ def RidgeCVModel(filename):
                       }}
 
 
-# In[91]:
+# In[3]:
 
 #6
 def ElasticNetCVModel(filename):
@@ -209,8 +209,9 @@ def ElasticNetCVModel(filename):
     
     ##############################################################
     tuned_parameters = []
-    tuned_parameters.append( { 'alpha'   : np.logspace(-15, -10, 20), 
-                               'l1_ratio': [.01]  
+    tuned_parameters.append( { 
+                               #'alpha'   : np.logspace(-15, -10, 20), 
+                               'l1_ratio': [.0001, .001, .01]  
                              }
                            ) 
     
@@ -221,10 +222,11 @@ def ElasticNetCVModel(filename):
 
     # Elastic Net (L1 + L2)
     # Linear regression with combined L1 and L2 priors as regularizer
-    grdsurch = GridSearchCV(ElasticNet(alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, 
-                                       precompute=False, max_iter=1e7, copy_X=True, tol=1e-20, 
-                                       warm_start=False, positive=False, 
-                                       random_state=None, selection='cyclic'), 
+    #
+    grdsurch = GridSearchCV(ElasticNet(alpha=3.7926901907322537e-14, copy_X=True, fit_intercept=True,
+      l1_ratio=0.9, max_iter=10000000.0, normalize=False, positive=False,
+      precompute=False, random_state=None, selection='cyclic', tol=1e-20,
+      warm_start=False), 
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
@@ -447,12 +449,10 @@ def SVRLinearCVModel(filename):
     ##############################################################
     tuned_parameters = []
     
-    
     tuned_parameters.append({
                              # 'gamma'  : np.logspace(-15, 3, 5),
                              'C'      : np.logspace(-5, 15, 5)
                             })
-
     
     ##############################################################
     
@@ -471,7 +471,7 @@ def SVRLinearCVModel(filename):
     
     grdsurch.fit(X_train, y_train)
 
-    print("\nBest parameters set found on development set:")
+    print("\n Best parameters set found on development set:")
     print()
     print(grdsurch.best_params_)
     

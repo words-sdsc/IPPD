@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[6]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
@@ -38,7 +38,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[54]:
+# In[16]:
 
 #4
 def RandomForestCVModel(filename):
@@ -48,6 +48,7 @@ def RandomForestCVModel(filename):
     from sklearn.ensemble.forest import RandomForestRegressor
     from numpy.random import RandomState
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -74,14 +75,19 @@ def RandomForestCVModel(filename):
     print("# Tuning hyper-parameters ")
     print()
 
-    grdsurch = GridSearchCV(RandomForestRegressor(n_estimators=6000, criterion='mse', max_depth=None, 
+    grdsurch = GridSearchCV(RandomForestRegressor(n_estimators=6000, criterion='mse', 
+                                                  max_depth=6, 
                                                   min_samples_split=2, 
-                                                  min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', 
-                                                  max_leaf_nodes=None, min_impurity_split=1e-07, 
+                                                  min_samples_leaf=1, 
+                                                  min_weight_fraction_leaf=0.0, 
+                                                  max_features='auto', 
+                                                  max_leaf_nodes=None, 
+                                                  min_impurity_split=1e-07, 
                                                   bootstrap=True, oob_score=True, 
-                                                  n_jobs=-1, random_state=None, verbose=0, warm_start=False), 
+                                                  n_jobs=-1, random_state=None, 
+                                                  verbose=0, warm_start=False), 
                        tuned_parameters, 
-                       cv=3, 
+                       cv=5, 
                        n_jobs=-1, 
                        scoring=rmse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
@@ -100,11 +106,46 @@ def RandomForestCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
+    
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
                       }}
+
+#this was Random Forest
 
 
 # In[129]:
@@ -419,7 +460,7 @@ def SVRSigmoidCVModel(filename):
                       }}
 
 
-# In[125]:
+# In[4]:
 
 #9
 
@@ -451,7 +492,7 @@ def SVRLinearCVModel(filename):
     
     tuned_parameters.append({
                              # 'gamma'  : np.logspace(-15, 3, 5),
-                             'C'      : np.logspace(-5, 15, 5)
+                             'C'      : np.logspace(-15, -5, 5)
                             })
     
     ##############################################################

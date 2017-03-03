@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[6]:
+# In[1]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
@@ -38,7 +38,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[16]:
+# In[2]:
 
 #4
 def RandomForestCVModel(filename):
@@ -61,8 +61,8 @@ def RandomForestCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     ##############################################################
     tuned_parameters = []
@@ -76,7 +76,7 @@ def RandomForestCVModel(filename):
     print()
 
     grdsurch = GridSearchCV(RandomForestRegressor(n_estimators=6000, criterion='mse', 
-                                                  max_depth=6, 
+                                                  max_depth=None, 
                                                   min_samples_split=2, 
                                                   min_samples_leaf=1, 
                                                   min_weight_fraction_leaf=0.0, 
@@ -148,7 +148,7 @@ def RandomForestCVModel(filename):
 #this was Random Forest
 
 
-# In[129]:
+# In[3]:
 
 #5
 def RidgeCVModel(filename):
@@ -158,6 +158,8 @@ def RidgeCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -174,9 +176,9 @@ def RidgeCVModel(filename):
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # Scale data
-    standard_scaler = preprocessing.StandardScaler()
-    X_train = standard_scaler.fit_transform(X_train)
-    X_test  = standard_scaler.transform(X_test)
+    #standard_scaler = preprocessing.StandardScaler()
+    #X_train = standard_scaler.fit_transform(X_train)
+    #X_test  = standard_scaler.transform(X_test)
     
     ##############################################################
     tuned_parameters = []
@@ -210,14 +212,49 @@ def RidgeCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
+    
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
                       }}
 
+#this was RidgeCVModel
 
-# In[3]:
+
+# In[4]:
 
 #6
 def ElasticNetCVModel(filename):
@@ -228,6 +265,8 @@ def ElasticNetCVModel(filename):
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
     from sklearn.model_selection import RandomizedSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -244,9 +283,9 @@ def ElasticNetCVModel(filename):
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     #Scale
-    standard_scaler = preprocessing.StandardScaler()
-    X_train = standard_scaler.fit_transform(X_train)
-    X_test  = standard_scaler.transform(X_test)
+    #standard_scaler = preprocessing.StandardScaler()
+    #X_train = standard_scaler.fit_transform(X_train)
+    #X_test  = standard_scaler.transform(X_test)
     
     ##############################################################
     tuned_parameters = []
@@ -304,14 +343,49 @@ def ElasticNetCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
+    
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
                       }}
 
+#this was ElasticNet
 
-# In[121]:
+
+# In[5]:
 
 #7
 def SVRPolyCVModel(filename):
@@ -321,6 +395,8 @@ def SVRPolyCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -338,9 +414,9 @@ def SVRPolyCVModel(filename):
     
     #Standard Scaling for SVR
     # Scale data
-    standard_scaler = preprocessing.StandardScaler()
-    X_train = standard_scaler.fit_transform(X_trai)
-    X_test  = standard_scaler.transform(X_tes)
+    #standard_scaler = preprocessing.StandardScaler()
+    #X_train = standard_scaler.fit_transform(X_trai)
+    #X_test  = standard_scaler.transform(X_tes)
     
     # -- a -- ‘poly’ 
     ##############################################################
@@ -388,7 +464,7 @@ def SVRPolyCVModel(filename):
                       }}
 
 
-# In[122]:
+# In[6]:
 
 #8
 def SVRSigmoidCVModel(filename):
@@ -399,6 +475,8 @@ def SVRSigmoidCVModel(filename):
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
     import numpy as np
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -411,8 +489,8 @@ def SVRSigmoidCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # -- b -- ‘sigmoid’
     ##############################################################
@@ -460,7 +538,7 @@ def SVRSigmoidCVModel(filename):
                       }}
 
 
-# In[4]:
+# In[7]:
 
 #9
 
@@ -471,6 +549,8 @@ def SVRLinearCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -483,8 +563,8 @@ def SVRLinearCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # -- c -- ‘linear’ 
     ##############################################################
@@ -531,7 +611,7 @@ def SVRLinearCVModel(filename):
                       }}
 
 
-# In[124]:
+# In[8]:
 
 #10
 
@@ -542,6 +622,8 @@ def SVRRbfCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -554,8 +636,8 @@ def SVRRbfCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # -- d -- ‘rbf’
     ##############################################################
@@ -602,7 +684,7 @@ def SVRRbfCVModel(filename):
                       }}
 
 
-# In[53]:
+# In[9]:
 
 ## OK below this
 
@@ -612,7 +694,7 @@ def SVRRbfCVModel(filename):
 
 
 
-# In[127]:
+# In[10]:
 
 #1 OK
 def LassoCVModel(filename):
@@ -622,6 +704,8 @@ def LassoCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -634,8 +718,8 @@ def LassoCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # Scale data
     #standard_scaler = preprocessing.StandardScaler()
@@ -677,15 +761,49 @@ def LassoCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
+    
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
-                      }
-           }
+                      }}
+
+#this was Lasso
 
 
-# In[52]:
+# In[11]:
 
 #2 OK
 def OMPCVModel(filename):
@@ -695,6 +813,8 @@ def OMPCVModel(filename):
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -747,16 +867,50 @@ def OMPCVModel(filename):
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
+
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
     
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
     
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
                       }}
 
+#this was OMPCV
 
-# In[49]:
+
+# In[12]:
 
 #3 OK
 def GradientBoostingCVModel(filename):
@@ -766,6 +920,8 @@ def GradientBoostingCVModel(filename):
     from sklearn.ensemble import GradientBoostingRegressor
     from numpy.random import RandomState
     from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
 
     with open(filename, 'rb') as handle:
         data = pickle.load(handle)
@@ -778,8 +934,8 @@ def GradientBoostingCVModel(filename):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
     
     #Normalize
-    X_train = preprocessing.normalize(X_train, norm='l1')
-    X_test  = preprocessing.normalize(X_test,  norm='l1')
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     ##############################################################
     tuned_parameters = [     {  "n_estimators" :[6000],
@@ -821,9 +977,74 @@ def GradientBoostingCVModel(filename):
     model               = grdsurch.best_estimator_
     reporting_testscore = rmse_scorer(model, X_test, y_test)
     
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(data['X_test']))
+    
+    print('A: %d' % len(data['y_test_A']))
+    reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+    display(data['y_test_A'])
+    display(model.predict(data['X_test_A']))
+
+    print('B: %d' % len(data['y_test_B']))
+    reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+    display(data['y_test_B'])
+    display(model.predict(data['X_test_B']))
+
+    print('C: %d' % len(data['y_test_C']))
+    reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+    display(data['y_test_C'])
+    display(model.predict(data['X_test_C']))
+
+    print('D: %d' % len(data['y_test_D']))
+    reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+    display(data['y_test_D'])
+    display(model.predict(data['X_test_D']))
+    
     return {filename: {'train_rmse_cv_4_picking': rmse_cv, 
-                       'test_rmse_4_reporting': reporting_testscore, 
+                       'test_rmse_4_reporting' : reporting_testscore,
+                       'test_rmse_4_reportingA': reporting_testscoreA,
+                       'test_rmse_4_reportingB': reporting_testscoreB,
+                       'test_rmse_4_reportingC': reporting_testscoreC,
+                       'test_rmse_4_reportingD': reporting_testscoreD,
                        'test_mean_y_4_comparing': y_test.mean(),
+                       'test_mean_y_4_comparingA': data['y_test_A'].mean(),
+                       'test_mean_y_4_comparingB': data['y_test_B'].mean(),
+                       'test_mean_y_4_comparingC': data['y_test_C'].mean(),
+                       'test_mean_y_4_comparingD': data['y_test_D'].mean(),
                        'model': model
                       }}
+
+#this was GradientBoosting
+
+
+# In[13]:
+
+print()
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 

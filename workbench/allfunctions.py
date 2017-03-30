@@ -1023,7 +1023,27 @@ def SVRRbfCVModel(filename, scale=True):
 
 
 
-# In[17]:
+# In[34]:
+
+def scale_this(X_trai, X_tes):
+    ############ scaling of features #################
+    print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Scaling X_train and X_test...')
+    from sklearn import preprocessing
+    
+    ##################################################
+    # Scale X
+    standard_scaler = preprocessing.StandardScaler()
+    X_train = standard_scaler.fit_transform(X_trai)
+    X_test  = standard_scaler.transform(X_tes)
+    
+    ##################################################    
+    
+    
+    ##################################################
+    return X_train, X_test
+
+
+# In[33]:
 
 #1 OK
 def LassoCVModel(filename, scale=True):
@@ -1046,11 +1066,7 @@ def LassoCVModel(filename, scale=True):
         
     ############ scaling of features #################
     if(scale):
-        print('Scaling X_train and X_test...')
-        from sklearn import preprocessing
-        standard_scaler = preprocessing.StandardScaler()
-        X_train = standard_scaler.fit_transform(X_trai)
-        X_test  = standard_scaler.transform(X_tes)
+        X_train, X_test = scale_this(X_trai, X_tes)
     else:
         X_train = X_trai
         X_test  = X_tes
@@ -1097,7 +1113,7 @@ def LassoCVModel(filename, scale=True):
     # added for measure predictions on X_test_A, X_test_B ...
     print('Full Test Set: %d' % len(y_test))
     display(data['y_test'])
-    display(model.predict(data['X_test']))
+    display(model.predict(X_test))
     
     reporting_testscoreA = None
     reporting_testscoreB = None
@@ -1110,30 +1126,50 @@ def LassoCVModel(filename, scale=True):
         
     if('y_test_A' in data):
         print('A: %d' % len(data['y_test_A']))
-        reporting_testscoreA = rmse_scorer(model, data['X_test_A'], data['y_test_A'])
+        if(scale):
+            X_train, X_test_A = scale_this(X_trai, data['X_test_A'])
+        else:
+            X_test_A = data['X_test_A']
+        
+        reporting_testscoreA = rmse_scorer(model, X_test_A, data['y_test_A'])
         display(data['y_test_A'])
-        display(model.predict(data['X_test_A']))
+        display(model.predict(X_test_A))
         test_mean_y_comparingA = data['y_test_A'].mean()
 
     if('y_test_B' in data):
         print('B: %d' % len(data['y_test_B']))
-        reporting_testscoreB = rmse_scorer(model, data['X_test_B'], data['y_test_B'])
+        if(scale):
+            X_train, X_test_B = scale_this(X_trai, data['X_test_B'])
+        else:
+            X_test_B = data['X_test_B']
+        
+        reporting_testscoreB = rmse_scorer(model, X_test_B, data['y_test_B'])
         display(data['y_test_B'])
-        display(model.predict(data['X_test_B']))
+        display(model.predict(X_test_B))
         test_mean_y_comparingB = data['y_test_B'].mean()
 
     if('y_test_C' in data):
         print('C: %d' % len(data['y_test_C']))
-        reporting_testscoreC = rmse_scorer(model, data['X_test_C'], data['y_test_C'])
+        if(scale):
+            X_train, X_test_C = scale_this(X_trai, data['X_test_C'])
+        else:
+            X_test_C = data['X_test_C']
+        
+        reporting_testscoreC = rmse_scorer(model, X_test_C, data['y_test_C'])
         display(data['y_test_C'])
-        display(model.predict(data['X_test_C']))
+        display(model.predict(X_test_C))
         test_mean_y_comparingC = data['y_test_C'].mean()
 
     if('y_test_D' in data):
         print('D: %d' % len(data['y_test_D']))
-        reporting_testscoreD = rmse_scorer(model, data['X_test_D'], data['y_test_D'])
+        if(scale):
+            X_train, X_test_D = scale_this(X_trai, data['X_test_D'])
+        else:
+            X_test_D = data['X_test_D']
+        
+        reporting_testscoreD = rmse_scorer(model, X_test_D, data['y_test_D'])
         display(data['y_test_D'])
-        display(model.predict(data['X_test_D']))
+        display(model.predict(X_test_D))
         test_mean_y_comparingD = data['y_test_D'].mean()
     
     return {filename: {'train_rmse_cv_picking': rmse_cv, 

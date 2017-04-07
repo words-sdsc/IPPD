@@ -17,14 +17,17 @@
 # 
 # 8   SVRRbfCVModel (filename):
 
-# In[1]:
+# In[9]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
+c = 0
 
-def rmse_scorer(model, X, y): 
+def rmse_scorer(model, X, y):
+    global c
     y_predict = model.predict(X)
     k = np.sqrt(mean_squared_error(y, y_predict))
+    c = c+1
     return k
 
 
@@ -87,7 +90,7 @@ def RandomForestCVModel(filename, scale=False):
                                                   n_jobs=-1, random_state=None, 
                                                   verbose=0, warm_start=False), 
                        tuned_parameters, 
-                       cv=5, 
+                       cv=3, 
                        n_jobs=-1, 
                        scoring=rmse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
@@ -174,7 +177,15 @@ def RandomForestCVModel(filename, scale=False):
 #this was Random Forest
 
 
-# In[60]:
+# In[18]:
+
+def initialize_c():
+    # c counts number of times scorer is called
+    global c
+    c=0
+
+
+# In[27]:
 
 #5
 def RidgeCVModel(filename, scale=True):
@@ -183,7 +194,7 @@ def RidgeCVModel(filename, scale=True):
     from sklearn.linear_model import Ridge
     from sklearn.metrics import mean_squared_error
     from sklearn import preprocessing
-    from sklearn.model_selection import GridSearchCV
+    from sklearn.model_selection import GridSearchCV 
     from IPython.display import display
 
 
@@ -208,9 +219,13 @@ def RidgeCVModel(filename, scale=True):
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     
-    ############################################################## Ridge
+    ############################################################## RidgeL2
     tuned_parameters = []
-    tuned_parameters.append( {'alpha' : np.logspace(-25, -25, 100) })
+    tuned_parameters.append( {'alpha' : np.logspace(-35, +25, 100) } ) 
+    
+    print('\n\n')
+    print(tuned_parameters)
+    print('\n\n')
     ##############################################################
     
     print("# Tuning hyper-parameters ")
@@ -291,6 +306,8 @@ def RidgeCVModel(filename, scale=True):
         display(model.predict(X_test_D))
         test_mean_y_comparingD = data['y_test_D'].mean()
     
+    print("\n\n scorer is called: %d times \n\n" % c)
+    
     return {filename: {'train_rmse_cv_picking': rmse_cv, 
                        'test_rmse_reporting' : reporting_testscore,
                        'test_rmse_reportingA': reporting_testscoreA,
@@ -366,21 +383,6 @@ def ElasticNetCVModel(filename, scale=True):
                        cv=3, 
                        n_jobs=-1, 
                        scoring=rmse_scorer)
-    ''' 
-    
-    grdsurch = RandomizedSearchCV(estimator=ElasticNet(alpha=1.0, l1_ratio=0.5, fit_intercept=True, normalize=False, 
-                                       precompute=False, max_iter=1e9, copy_X=True, tol=1e-20, 
-                                       warm_start=False, positive=False, 
-                                       random_state=None, selection='cyclic'), 
-                                  param_distributions=tuned_parameters[0], 
-                                  n_iter=10, scoring=rmse_scorer, 
-                                  fit_params=None, n_jobs=-1, 
-                                  iid=True, refit=True, cv=3, 
-                                  verbose=0, pre_dispatch='2*n_jobs', 
-                                  random_state=None, 
-                                  error_score='raise', 
-                                  return_train_score=True)
-    ''' 
     
     print('Starting grdsurch.fit(X_train, y_train)')
     

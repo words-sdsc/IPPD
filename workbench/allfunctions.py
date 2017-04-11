@@ -223,13 +223,11 @@ def RidgeCVModel(filename, scale=True):
     tuned_parameters = []
     tuned_parameters.append( {'alpha' : np.logspace(-35, +25, 100) } ) 
     
-    print('\n\n')
-    print(tuned_parameters)
-    print('\n\n')
     ##############################################################
     
     print("# Tuning hyper-parameters ")
-    print()
+    print(tuned_parameters)
+    print("##########################")
 
     # Ridge Regression (L2)
     grdsurch = GridSearchCV(Ridge(alpha=1.0, fit_intercept=True, 
@@ -370,7 +368,8 @@ def ElasticNetCVModel(filename, scale=True):
     ##############################################################
     
     print("# Tuning hyper-parameters ")
-    print()
+    print(tuned_parameters)
+    print("##########################")
 
     # Elastic Net (L1 + L2)
     # Linear regression with combined L1 and L2 priors as regularizer
@@ -1066,7 +1065,7 @@ import numpy as np
 np.logspace(2, 3, 30)
 
 
-# In[48]:
+# In[2]:
 
 #1 OK
 def LassoCVModel(filename, scale=True):
@@ -1104,7 +1103,8 @@ def LassoCVModel(filename, scale=True):
     ##############################################################
     
     print("# Tuning hyper-parameters ")
-    print()
+    print(tuned_parameters)
+    print("##########################")
 
     # Lasso (L1)
     grdsurch = GridSearchCV(Lasso(alpha=1.0, fit_intercept=True, normalize=False, precompute=False, 

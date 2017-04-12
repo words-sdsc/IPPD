@@ -35,7 +35,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[51]:
+# In[3]:
 
 #4
 def RandomForestCVModel(filename, scale=False):
@@ -70,7 +70,7 @@ def RandomForestCVModel(filename, scale=False):
     ##############################################################
     tuned_parameters = []
     tuned_parameters.append( { 
-                              "n_estimators" :[2000, 4000, 6000]
+                              "n_estimators" :[2000, 4000, 6000, 10000]
                             })
     
     ##############################################################
@@ -175,6 +175,147 @@ def RandomForestCVModel(filename, scale=False):
                       }}
 
 #this was Random Forest
+
+
+# In[4]:
+
+#3 OK
+def GradientBoostingCVModel(filename, scale=False):
+    #open file and get the dictionary
+    import pickle
+    from sklearn import preprocessing
+    from sklearn.ensemble import GradientBoostingRegressor
+    from numpy.random import RandomState
+    from sklearn.model_selection import GridSearchCV
+    from IPython.display import display
+
+
+    with open(filename, 'rb') as handle:
+        data = pickle.load(handle)
+
+    #extract X_train, y_train, X_test, t_test
+    X_trai  = data['X_train']
+    y_train = data['y_train']
+    X_tes   = data['X_test']
+    y_test  = data['y_test']
+        
+    ############ scaling of features #################
+    
+    X_train, X_test = scale_this(scale, X_trai, X_tes)
+    
+    ##################################################  
+    print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
+
+    #Normalize
+    #X_train = preprocessing.normalize(X_train, norm='l1')
+    #X_test  = preprocessing.normalize(X_test,  norm='l1')
+    
+    ##############################################################
+    tuned_parameters = [     {  "n_estimators" :[2000, 4000, 6000, 10000],
+                                "loss" : ['ls'],
+                                "learning_rate": [0.005, 0.01, 0.001]
+                             }
+                       ]
+
+    
+    ##############################################################
+    
+    print("# Tuning hyper-parameters ")
+    print()
+
+    #Boosting
+    grdsurch = GridSearchCV(GradientBoostingRegressor(loss='ls', learning_rate=0.1, n_estimators=6000, subsample=1.0, 
+                                                      criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, 
+                                                      min_weight_fraction_leaf=0.0, max_depth=None, 
+                                                      min_impurity_split=1e-07, 
+                                                      init=None, random_state=None, max_features=None, alpha=0.9, 
+                                                      verbose=0, max_leaf_nodes=None, warm_start=False, presort='auto'), 
+                       tuned_parameters, 
+                       cv=3, 
+                       n_jobs=-1, 
+                       scoring=rmse_scorer)
+    print('Starting grdsurch.fit(X_train, y_train)')
+    
+    grdsurch.fit(X_train, y_train)
+
+    print("\nBest parameters set found on development set:")
+    print()
+    print(grdsurch.best_params_)
+    
+    print(grdsurch.best_estimator_)
+    print()
+    rmse_cv = grdsurch.best_score_
+
+    #Reporting Score on Test Set
+    model               = grdsurch.best_estimator_
+    reporting_testscore = rmse_scorer(model, X_test, y_test)
+
+    ###########################
+    # added for measure predictions on X_test_A, X_test_B ...
+    print('Full Test Set: %d' % len(y_test))
+    display(data['y_test'])
+    display(model.predict(X_test))
+    
+    reporting_testscoreA = None
+    reporting_testscoreB = None
+    reporting_testscoreC = None
+    reporting_testscoreD = None
+    test_mean_y_comparingA = None
+    test_mean_y_comparingB = None
+    test_mean_y_comparingC = None
+    test_mean_y_comparingD = None        
+        
+    if('y_test_A' in data):
+        print('A: %d' % len(data['y_test_A']))
+        X_train, X_test_A = scale_this(scale, X_trai, data['X_test_A'])
+        
+        reporting_testscoreA = rmse_scorer(model, X_test_A, data['y_test_A'])
+        display(data['y_test_A'])
+        display(model.predict(X_test_A))
+        test_mean_y_comparingA = data['y_test_A'].mean()
+
+    if('y_test_B' in data):
+        print('B: %d' % len(data['y_test_B']))
+        X_train, X_test_B = scale_this(scale, X_trai, data['X_test_B'])
+        
+        reporting_testscoreB = rmse_scorer(model, X_test_B, data['y_test_B'])
+        display(data['y_test_B'])
+        display(model.predict(X_test_B))
+        test_mean_y_comparingB = data['y_test_B'].mean()
+
+    if('y_test_C' in data):
+        print('C: %d' % len(data['y_test_C']))
+        X_train, X_test_C = scale_this(scale, X_trai, data['X_test_C'])
+        
+        reporting_testscoreC = rmse_scorer(model, X_test_C, data['y_test_C'])
+        display(data['y_test_C'])
+        display(model.predict(X_test_C))
+        test_mean_y_comparingC = data['y_test_C'].mean()
+
+    if('y_test_D' in data):
+        print('D: %d' % len(data['y_test_D']))
+        X_train, X_test_D = scale_this(scale, X_trai, data['X_test_D'])
+        
+        reporting_testscoreD = rmse_scorer(model, X_test_D, data['y_test_D'])
+        display(data['y_test_D'])
+        display(model.predict(X_test_D))
+        test_mean_y_comparingD = data['y_test_D'].mean()
+    
+    return {filename: {'train_rmse_cv_picking': rmse_cv, 
+                       'test_rmse_reporting' : reporting_testscore,
+                       'test_rmse_reportingA': reporting_testscoreA,
+                       'test_rmse_reportingB': reporting_testscoreB,
+                       'test_rmse_reportingC': reporting_testscoreC,
+                       'test_rmse_reportingD': reporting_testscoreD,
+                       'test_mean_y_comparing': y_test.mean(),
+                       'test_mean_y_comparingA': test_mean_y_comparingA,
+                       'test_mean_y_comparingB': test_mean_y_comparingB,
+                       'test_mean_y_comparingC': test_mean_y_comparingC,
+                       'test_mean_y_comparingD': test_mean_y_comparingD,
+                       'model': model
+                      }}
+
+#this was GradientBoosting
 
 
 # In[18]:
@@ -1196,147 +1337,6 @@ def LassoCVModel(filename, scale=True):
                       }}
 
 #this was Lasso (L1)
-
-
-# In[49]:
-
-#3 OK
-def GradientBoostingCVModel(filename, scale=False):
-    #open file and get the dictionary
-    import pickle
-    from sklearn import preprocessing
-    from sklearn.ensemble import GradientBoostingRegressor
-    from numpy.random import RandomState
-    from sklearn.model_selection import GridSearchCV
-    from IPython.display import display
-
-
-    with open(filename, 'rb') as handle:
-        data = pickle.load(handle)
-
-    #extract X_train, y_train, X_test, t_test
-    X_trai  = data['X_train']
-    y_train = data['y_train']
-    X_tes   = data['X_test']
-    y_test  = data['y_test']
-        
-    ############ scaling of features #################
-    
-    X_train, X_test = scale_this(scale, X_trai, X_tes)
-    
-    ##################################################  
-    print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
-
-    #Normalize
-    #X_train = preprocessing.normalize(X_train, norm='l1')
-    #X_test  = preprocessing.normalize(X_test,  norm='l1')
-    
-    ##############################################################
-    tuned_parameters = [     {  "n_estimators" :[6000],
-                               "loss" : ['ls'],
-                                "learning_rate": [0.005, 0.01, 0.001]
-                             }
-                       ]
-
-    
-    ##############################################################
-    
-    print("# Tuning hyper-parameters ")
-    print()
-
-    #Boosting
-    grdsurch = GridSearchCV(GradientBoostingRegressor(loss='ls', learning_rate=0.1, n_estimators=6000, subsample=1.0, 
-                                                      criterion='friedman_mse', min_samples_split=2, min_samples_leaf=1, 
-                                                      min_weight_fraction_leaf=0.0, max_depth=None, 
-                                                      min_impurity_split=1e-07, 
-                                                      init=None, random_state=None, max_features=None, alpha=0.9, 
-                                                      verbose=0, max_leaf_nodes=None, warm_start=False, presort='auto'), 
-                       tuned_parameters, 
-                       cv=3, 
-                       n_jobs=-1, 
-                       scoring=rmse_scorer)
-    print('Starting grdsurch.fit(X_train, y_train)')
-    
-    grdsurch.fit(X_train, y_train)
-
-    print("\nBest parameters set found on development set:")
-    print()
-    print(grdsurch.best_params_)
-    
-    print(grdsurch.best_estimator_)
-    print()
-    rmse_cv = grdsurch.best_score_
-
-    #Reporting Score on Test Set
-    model               = grdsurch.best_estimator_
-    reporting_testscore = rmse_scorer(model, X_test, y_test)
-
-    ###########################
-    # added for measure predictions on X_test_A, X_test_B ...
-    print('Full Test Set: %d' % len(y_test))
-    display(data['y_test'])
-    display(model.predict(X_test))
-    
-    reporting_testscoreA = None
-    reporting_testscoreB = None
-    reporting_testscoreC = None
-    reporting_testscoreD = None
-    test_mean_y_comparingA = None
-    test_mean_y_comparingB = None
-    test_mean_y_comparingC = None
-    test_mean_y_comparingD = None        
-        
-    if('y_test_A' in data):
-        print('A: %d' % len(data['y_test_A']))
-        X_train, X_test_A = scale_this(scale, X_trai, data['X_test_A'])
-        
-        reporting_testscoreA = rmse_scorer(model, X_test_A, data['y_test_A'])
-        display(data['y_test_A'])
-        display(model.predict(X_test_A))
-        test_mean_y_comparingA = data['y_test_A'].mean()
-
-    if('y_test_B' in data):
-        print('B: %d' % len(data['y_test_B']))
-        X_train, X_test_B = scale_this(scale, X_trai, data['X_test_B'])
-        
-        reporting_testscoreB = rmse_scorer(model, X_test_B, data['y_test_B'])
-        display(data['y_test_B'])
-        display(model.predict(X_test_B))
-        test_mean_y_comparingB = data['y_test_B'].mean()
-
-    if('y_test_C' in data):
-        print('C: %d' % len(data['y_test_C']))
-        X_train, X_test_C = scale_this(scale, X_trai, data['X_test_C'])
-        
-        reporting_testscoreC = rmse_scorer(model, X_test_C, data['y_test_C'])
-        display(data['y_test_C'])
-        display(model.predict(X_test_C))
-        test_mean_y_comparingC = data['y_test_C'].mean()
-
-    if('y_test_D' in data):
-        print('D: %d' % len(data['y_test_D']))
-        X_train, X_test_D = scale_this(scale, X_trai, data['X_test_D'])
-        
-        reporting_testscoreD = rmse_scorer(model, X_test_D, data['y_test_D'])
-        display(data['y_test_D'])
-        display(model.predict(X_test_D))
-        test_mean_y_comparingD = data['y_test_D'].mean()
-    
-    return {filename: {'train_rmse_cv_picking': rmse_cv, 
-                       'test_rmse_reporting' : reporting_testscore,
-                       'test_rmse_reportingA': reporting_testscoreA,
-                       'test_rmse_reportingB': reporting_testscoreB,
-                       'test_rmse_reportingC': reporting_testscoreC,
-                       'test_rmse_reportingD': reporting_testscoreD,
-                       'test_mean_y_comparing': y_test.mean(),
-                       'test_mean_y_comparingA': test_mean_y_comparingA,
-                       'test_mean_y_comparingB': test_mean_y_comparingB,
-                       'test_mean_y_comparingC': test_mean_y_comparingC,
-                       'test_mean_y_comparingD': test_mean_y_comparingD,
-                       'model': model
-                      }}
-
-#this was GradientBoosting
 
 
 # In[50]:

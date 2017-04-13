@@ -1029,7 +1029,7 @@ def SVRLinearCVModel(filename, scale=False):
 #this was SVRLinear
 
 
-# In[59]:
+# In[1]:
 
 #10
 
@@ -1079,7 +1079,7 @@ def SVRRbfCVModel(filename, scale=True):
 
     grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
+                                epsilon=0.1, shrinking=False, cache_size=100*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 

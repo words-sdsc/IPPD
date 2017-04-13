@@ -35,7 +35,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[4]:
+# In[1]:
 
 #4
 def RandomForestCVModel(filename, scale=False):
@@ -177,7 +177,7 @@ def RandomForestCVModel(filename, scale=False):
 #this was Random Forest
 
 
-# In[5]:
+# In[2]:
 
 #3 OK
 def GradientBoostingCVModel(filename, scale=False):

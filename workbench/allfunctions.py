@@ -35,7 +35,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[3]:
+# In[4]:
 
 #4
 def RandomForestCVModel(filename, scale=False):
@@ -177,7 +177,7 @@ def RandomForestCVModel(filename, scale=False):
 #this was Random Forest
 
 
-# In[4]:
+# In[5]:
 
 #3 OK
 def GradientBoostingCVModel(filename, scale=False):
@@ -213,7 +213,7 @@ def GradientBoostingCVModel(filename, scale=False):
     ##############################################################
     tuned_parameters = [     {  "n_estimators" :[2000, 4000, 6000, 10000],
                                 "loss" : ['ls'],
-                                "learning_rate": [0.005, 0.01, 0.001]
+                                "learning_rate": [0.001, 0.005, 0.01]
                              }
                        ]
 

@@ -17,7 +17,7 @@
 # 
 # 8   SVRRbfCVModel (filename):
 
-# In[9]:
+# In[ ]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
@@ -35,7 +35,7 @@ def rmse_scorer(model, X, y):
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
-# In[1]:
+# In[ ]:
 
 #4
 def RandomForestCVModel(filename, scale=False):
@@ -177,7 +177,7 @@ def RandomForestCVModel(filename, scale=False):
 #this was Random Forest
 
 
-# In[2]:
+# In[ ]:
 
 #3 OK
 def GradientBoostingCVModel(filename, scale=False):
@@ -318,7 +318,7 @@ def GradientBoostingCVModel(filename, scale=False):
 #this was GradientBoosting
 
 
-# In[18]:
+# In[ ]:
 
 def initialize_c():
     # c counts number of times scorer is called
@@ -326,7 +326,7 @@ def initialize_c():
     c=0
 
 
-# In[27]:
+# In[ ]:
 
 #5
 def RidgeCVModel(filename, scale=True):
@@ -464,7 +464,7 @@ def RidgeCVModel(filename, scale=True):
 #this was RidgeCVModel
 
 
-# In[62]:
+# In[ ]:
 
 #6
 def ElasticNetCVModel(filename, scale=True):
@@ -608,7 +608,7 @@ def ElasticNetCVModel(filename, scale=True):
 #this was ElasticNet
 
 
-# In[56]:
+# In[ ]:
 
 #7
 def SVRPolyCVModel(filename, scale=False):
@@ -636,11 +636,7 @@ def SVRPolyCVModel(filename, scale=False):
     
     ##################################################  
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
-    
-    #Normalize
-    #X_train = preprocessing.normalize(X_train, norm='l1')
-    #X_test  = preprocessing.normalize(X_test,  norm='l1')
-    
+        
     # -- a -- ‘poly’ 
     ##############################################################
     tuned_parameters = []
@@ -748,7 +744,7 @@ def SVRPolyCVModel(filename, scale=False):
 #this was SVRPoly
 
 
-# In[57]:
+# In[ ]:
 
 #8
 def SVRSigmoidCVModel(filename, scale=False):
@@ -889,7 +885,7 @@ def SVRSigmoidCVModel(filename, scale=False):
 #this was SVRSigmoid
 
 
-# In[58]:
+# In[ ]:
 
 #9
 
@@ -1029,7 +1025,7 @@ def SVRLinearCVModel(filename, scale=False):
 #this was SVRLinear
 
 
-# In[1]:
+# In[ ]:
 
 #10
 
@@ -1169,12 +1165,12 @@ def SVRRbfCVModel(filename, scale=True):
 #this was SVRrbf
 
 
-# In[9]:
+# In[ ]:
 
 ## OK below this
 
 
-# In[42]:
+# In[ ]:
 
 def scale_this(scale, X_trai0, X_tes0):
     ############ scaling of features #################
@@ -1200,13 +1196,13 @@ def scale_this(scale, X_trai0, X_tes0):
     return X_train, X_test
 
 
-# In[47]:
+# In[ ]:
 
 import numpy as np
 np.logspace(2, 3, 30)
 
 
-# In[2]:
+# In[ ]:
 
 #1 OK
 def LassoCVModel(filename, scale=True):
@@ -1339,7 +1335,7 @@ def LassoCVModel(filename, scale=True):
 #this was Lasso (L1)
 
 
-# In[50]:
+# In[ ]:
 
 #2 OK
 def OMPCVModel(filename, scale=False):
@@ -1478,7 +1474,7 @@ def OMPCVModel(filename, scale=False):
 #this was OMPCV
 
 
-# In[13]:
+# In[ ]:
 
 print()
 

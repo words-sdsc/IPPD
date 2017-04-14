@@ -612,7 +612,7 @@ def ElasticNetCVModel(filename, scale=True):
 #this was ElasticNet
 
 
-# In[3]:
+# In[8]:
 
 def get_svr_parameters():
     # parameters used by all SVR
@@ -620,11 +620,11 @@ def get_svr_parameters():
     
     _parameters = []
     _parameters.append({
-                             'C'      : np.logspace(-5,0,5), # np.array([ 1.0 ]),      #
-                             'epsilon': np.array([ 50.0 ]),
-                             'degree' : np.arange(3,6,20),   # np.array([ 6 ]),         #
-                             'coef0'  : np.array([ 0.0 ]),
-                             'gamma'  : np.array(['auto'])   # np.logspace(0, 15, 5)        
+                             'C'      : np.logspace(-10, 0, 10), # np.array([ 1.0 ])
+                             'epsilon': np.logspace(-8, -1, 8),
+                             'degree' : np.arange(3, 50, 8),   # jump = 8
+                             'coef0'  : np.logspace(-10, 0, 10), # array([ 0.0 , 5.0, 10.0 ]),
+                             'gamma'  : np.logspace(-20, -1, 8) # np.array(['auto'])           
                             })
     return _parameters
 
@@ -674,7 +674,7 @@ def SVRPolyCVModel(filename, scale=True):
 
     grdsurch = GridSearchCV(SVR(kernel='poly', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-2, C=1.0, 
-                                epsilon=20, shrinking=False, cache_size=20*1024, 
+                                epsilon=20, shrinking=False, cache_size=200*1024, 
                                 verbose=False, max_iter=1e9), 
                        tuned_parameters, 
                        cv=3, 
@@ -818,7 +818,7 @@ def SVRSigmoidCVModel(filename, scale=True):
 
     grdsurch = GridSearchCV(SVR(kernel='sigmoid', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
+                                epsilon=0.1, shrinking=False, cache_size=200*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -960,7 +960,7 @@ def SVRLinearCVModel(filename, scale=True):
 
     grdsurch = GridSearchCV(SVR(kernel='linear', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
+                                epsilon=0.1, shrinking=False, cache_size=200*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -1102,7 +1102,7 @@ def SVRRbfCVModel(filename, scale=True):
 
     grdsurch = GridSearchCV(SVR(kernel='rbf', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-7, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=100*1024, 
+                                epsilon=0.1, shrinking=False, cache_size=200*1024, 
                                 verbose=False, max_iter=-1), 
                        tuned_parameters, 
                        cv=3, 
@@ -1221,12 +1221,6 @@ def scale_this(scale, X_trai0, X_tes0):
         X_test  = X_tes
         ##################################################
     return X_train, X_test
-
-
-# In[ ]:
-
-import numpy as np
-np.logspace(2, 3, 30)
 
 
 # In[ ]:

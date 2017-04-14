@@ -17,26 +17,22 @@
 # 
 # 8   SVRRbfCVModel (filename):
 
-# In[5]:
+# In[2]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
-c = 0
+import sys
 
 def rmse_scorer(model, X, y):
-    import sys
-    import pandas as pd
-    global c
-    
+    return np.sqrt(mse_scorer(model, X, y))
+
+def mse_scorer(model, X, y):    
     y_predict = model.predict(X)
     
-    if(True in np.isnan(y_predict)):
+    if( np.isnan(y_predict).any() ):
         return sys.maxsize
     
-    k = np.sqrt(mean_squared_error(y, y_predict))
-    c = c+1
-    
-    return k
+    return mean_squared_error(y, y_predict)
 
 
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
@@ -100,7 +96,7 @@ def RandomForestCVModel(filename, scale=False):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -241,7 +237,7 @@ def GradientBoostingCVModel(filename, scale=False):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -385,7 +381,7 @@ def RidgeCVModel(filename, scale=True):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -530,7 +526,7 @@ def ElasticNetCVModel(filename, scale=True):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     
     print('Starting grdsurch.fit(X_train, y_train)')
     
@@ -616,18 +612,19 @@ def ElasticNetCVModel(filename, scale=True):
 #this was ElasticNet
 
 
-# In[16]:
+# In[3]:
 
 def get_svr_parameters():
     # parameters used by all SVR
+    import numpy as np
     
     _parameters = []
     _parameters.append({
-                             'C'      : np.logspace(-1,5,5),
-                             'epsilon': np.array([ 50 ]),
-                             'degree' : np.arange(3,20,15),
+                             'C'      : np.logspace(-5,0,5), # np.array([ 1.0 ]),      #
+                             'epsilon': np.array([ 50.0 ]),
+                             'degree' : np.arange(3,6,20),   # np.array([ 6 ]),         #
                              'coef0'  : np.array([ 0.0 ]),
-                             'gamma'  : np.logspace(0, 15, 5)        
+                             'gamma'  : np.array(['auto'])   # np.logspace(0, 15, 5)        
                             })
     return _parameters
 
@@ -682,7 +679,7 @@ def SVRPolyCVModel(filename, scale=True):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -770,7 +767,7 @@ def SVRPolyCVModel(filename, scale=True):
 # In[19]:
 
 #8
-def SVRSigmoidCVModel(filename, scale=False):
+def SVRSigmoidCVModel(filename, scale=True):
     #open file and get the dictionary
     import pickle
     from sklearn.svm import SVR
@@ -826,7 +823,7 @@ def SVRSigmoidCVModel(filename, scale=False):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -915,7 +912,7 @@ def SVRSigmoidCVModel(filename, scale=False):
 
 #9
 
-def SVRLinearCVModel(filename, scale=False):
+def SVRLinearCVModel(filename, scale=True):
     #open file and get the dictionary
     import pickle
     from sklearn.svm import SVR
@@ -968,7 +965,7 @@ def SVRLinearCVModel(filename, scale=False):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -1110,7 +1107,7 @@ def SVRRbfCVModel(filename, scale=True):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -1280,7 +1277,7 @@ def LassoCVModel(filename, scale=True):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     print('Starting grdsurch.fit(X_train, y_train)')
     
     grdsurch.fit(X_train, y_train)
@@ -1418,7 +1415,7 @@ def OMPCVModel(filename, scale=False):
                        tuned_parameters, 
                        cv=3, 
                        n_jobs=-1, 
-                       scoring=rmse_scorer)
+                       scoring=mse_scorer)
     
     print('Starting grdsurch.fit(X_train, y_train)')
     

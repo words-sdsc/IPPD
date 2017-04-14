@@ -17,17 +17,25 @@
 # 
 # 8   SVRRbfCVModel (filename):
 
-# In[ ]:
+# In[5]:
 
 from sklearn.metrics import mean_squared_error 
 import numpy as np
 c = 0
 
 def rmse_scorer(model, X, y):
+    import sys
+    import pandas as pd
     global c
+    
     y_predict = model.predict(X)
+    
+    if(True in np.isnan(y_predict)):
+        return sys.maxsize
+    
     k = np.sqrt(mean_squared_error(y, y_predict))
     c = c+1
+    
     return k
 
 
@@ -608,10 +616,26 @@ def ElasticNetCVModel(filename, scale=True):
 #this was ElasticNet
 
 
-# In[ ]:
+# In[16]:
+
+def get_svr_parameters():
+    # parameters used by all SVR
+    
+    _parameters = []
+    _parameters.append({
+                             'C'      : np.logspace(-1,5,5),
+                             'epsilon': np.array([ 50 ]),
+                             'degree' : np.arange(3,20,15),
+                             'coef0'  : np.array([ 0.0 ]),
+                             'gamma'  : np.logspace(0, 15, 5)        
+                            })
+    return _parameters
+
+
+# In[18]:
 
 #7
-def SVRPolyCVModel(filename, scale=False):
+def SVRPolyCVModel(filename, scale=True):
     #open file and get the dictionary
     import pickle
     from sklearn.svm import SVR
@@ -619,6 +643,7 @@ def SVRPolyCVModel(filename, scale=False):
     from sklearn import preprocessing
     from sklearn.model_selection import GridSearchCV
     from IPython.display import display
+    import pandas as pd
 
 
     with open(filename, 'rb') as handle:
@@ -629,7 +654,8 @@ def SVRPolyCVModel(filename, scale=False):
     y_train = data['y_train']
     X_tes   = data['X_test']
     y_test  = data['y_test']
-        
+    
+
     ############ scaling of features #################
     
     X_train, X_test = scale_this(scale, X_trai, X_tes)
@@ -638,14 +664,11 @@ def SVRPolyCVModel(filename, scale=False):
     print("Dataset size read: train %d and test %d \n" %(len(y_train), len(y_test)))
         
     # -- a -- ‘poly’ 
+    # 1111111111111111
     ##############################################################
-    tuned_parameters = []
+    tuned_parameters = get_svr_parameters()
     
-    tuned_parameters.append({
-                             'gamma'  : np.logspace(-15, 3, 2),
-                             'C'      : np.logspace(-5, 15, 2),
-                             'degree' : [6]
-                            })
+
     
     ##############################################################
     
@@ -654,7 +677,7 @@ def SVRPolyCVModel(filename, scale=False):
 
     grdsurch = GridSearchCV(SVR(kernel='poly', degree=3, 
                                 gamma='auto', coef0=0.0, tol=1e-2, C=1.0, 
-                                epsilon=0.1, shrinking=False, cache_size=20*1024, 
+                                epsilon=20, shrinking=False, cache_size=20*1024, 
                                 verbose=False, max_iter=1e9), 
                        tuned_parameters, 
                        cv=3, 
@@ -744,7 +767,7 @@ def SVRPolyCVModel(filename, scale=False):
 #this was SVRPoly
 
 
-# In[ ]:
+# In[19]:
 
 #8
 def SVRSigmoidCVModel(filename, scale=False):
@@ -756,6 +779,7 @@ def SVRSigmoidCVModel(filename, scale=False):
     from sklearn.model_selection import GridSearchCV
     import numpy as np
     from IPython.display import display
+    
 
 
     with open(filename, 'rb') as handle:
@@ -779,15 +803,17 @@ def SVRSigmoidCVModel(filename, scale=False):
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # -- b -- ‘sigmoid’
+    # 222222222222222222
     ##############################################################
-    tuned_parameters = []
+    tuned_parameters = get_svr_parameters()
     
+    '''
     tuned_parameters.append({
                              'gamma'  : np.logspace(-15, 3, 1),
                              'C'      : np.logspace(-5, 15, 1)
                             }
                             )    
-    
+    '''
     ##############################################################
     
     print("# Tuning hyper-parameters ")
@@ -885,7 +911,7 @@ def SVRSigmoidCVModel(filename, scale=False):
 #this was SVRSigmoid
 
 
-# In[ ]:
+# In[20]:
 
 #9
 
@@ -919,15 +945,17 @@ def SVRLinearCVModel(filename, scale=False):
     #X_train = preprocessing.normalize(X_train, norm='l1')
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
-    # -- c -- ‘linear’ 
+    # -- c -- ‘linear’
+    # 3333333333333333333
     ##############################################################
-    tuned_parameters = []
+    tuned_parameters = get_svr_parameters()
     
+    '''
     tuned_parameters.append({
                              # 'gamma'  : np.logspace(-15, 3, 5),
                              'C'      : np.logspace(-15, -5, 5)
                             })
-    
+    '''
     ##############################################################
     
     print("# Tuning hyper-parameters ")
@@ -1025,7 +1053,7 @@ def SVRLinearCVModel(filename, scale=False):
 #this was SVRLinear
 
 
-# In[ ]:
+# In[21]:
 
 #10
 
@@ -1060,14 +1088,16 @@ def SVRRbfCVModel(filename, scale=True):
     #X_test  = preprocessing.normalize(X_test,  norm='l1')
     
     # -- d -- ‘rbf’
+    # 44444444444444444444
     ##############################################################
-    tuned_parameters = []
-
+    tuned_parameters = get_svr_parameters()
+    
+    '''
     tuned_parameters.append({ 
                              'gamma'  : np.logspace(-15, 3, 5),
                              'C'      : np.logspace(-5, 15, 5)
                              })
-    
+    '''
     ##############################################################
     
     print("# Tuning hyper-parameters ")

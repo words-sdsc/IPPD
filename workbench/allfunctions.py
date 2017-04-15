@@ -107,7 +107,7 @@ def RandomForestCVModel(filename, scale=False):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -248,7 +248,7 @@ def GradientBoostingCVModel(filename, scale=False):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -392,7 +392,7 @@ def RidgeCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -538,7 +538,7 @@ def ElasticNetCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -612,19 +612,18 @@ def ElasticNetCVModel(filename, scale=True):
 #this was ElasticNet
 
 
-# In[8]:
+# In[1]:
+
 
 def get_svr_parameters():
-    # parameters used by all SVR
-    import numpy as np
-    
+    # parameters used by all SVR    
     _parameters = []
     _parameters.append({
-                             'C'      : np.logspace(-10, 0, 10), # np.array([ 1.0 ])
-                             'epsilon': np.logspace(-8, -1, 8),
-                             'degree' : np.arange(3, 50, 8),   # jump = 8
-                             'coef0'  : np.logspace(-10, 0, 10), # array([ 0.0 , 5.0, 10.0 ]),
-                             'gamma'  : np.logspace(-20, -1, 8) # np.array(['auto'])           
+                             'C'      : np.logspace(-10, 0, 4), # np.array([ 1.0 ])
+                             'epsilon': np.logspace(-8, -1, 4),
+                             'degree' : np.arange(3, 10, 6),   # jump = 6
+                             'coef0'  : np.logspace(-10, 0,  4), # array([ 0.0 , 5.0, 10.0 ]),
+                             'gamma'  : np.logspace(-20, -1, 4) # np.array(['auto'])           
                             })
     return _parameters
 
@@ -690,7 +689,7 @@ def SVRPolyCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -834,7 +833,7 @@ def SVRSigmoidCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -976,7 +975,7 @@ def SVRLinearCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -1118,7 +1117,7 @@ def SVRRbfCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -1282,7 +1281,7 @@ def LassoCVModel(filename, scale=True):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_
@@ -1421,7 +1420,7 @@ def OMPCVModel(filename, scale=False):
     
     print(grdsurch.best_estimator_)
     print()
-    rmse_cv = grdsurch.best_score_
+    rmse_cv = np.sqrt(grdsurch.best_score_)
 
     #Reporting Score on Test Set
     model               = grdsurch.best_estimator_

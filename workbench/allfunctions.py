@@ -322,15 +322,7 @@ def GradientBoostingCVModel(filename, scale=False):
 #this was GradientBoosting
 
 
-# In[ ]:
-
-def initialize_c():
-    # c counts number of times scorer is called
-    global c
-    c=0
-
-
-# In[ ]:
+# In[1]:
 
 #5
 def RidgeCVModel(filename, scale=True):
@@ -449,7 +441,6 @@ def RidgeCVModel(filename, scale=True):
         display(model.predict(X_test_D))
         test_mean_y_comparingD = data['y_test_D'].mean()
     
-    print("\n\n scorer is called: %d times \n\n" % c)
     
     return {filename: {'train_rmse_cv_picking': rmse_cv, 
                        'test_rmse_reporting' : reporting_testscore,
